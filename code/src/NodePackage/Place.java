@@ -48,4 +48,7 @@ public class Place extends Node{
         }
     }
 
+    public Neighbor getHead() {
+        return head;
+    }
 }

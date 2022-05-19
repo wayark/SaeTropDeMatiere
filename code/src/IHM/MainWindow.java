@@ -22,6 +22,12 @@ public class MainWindow extends JFrame {
     public JPanel constrPan(){
         JPanel main = new JPanel();
 
+        ImageIcon image = new ImageIcon("GraphMapFi.png");
+        JLabel graph = new JLabel(image);
+        graph.setSize(new Dimension(50,100));
+
+
+        main.add(graph);
 
 
         return main;

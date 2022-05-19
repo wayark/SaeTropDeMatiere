@@ -5,7 +5,25 @@ public class Main {
         ListCity listCity = new ListCity();
         CsvReader s = new CsvReader(listCity);
 
-        listCity.showNeighbor("Corbas");
+        //Recherche selon nom
+       listCity.findNode("Lyon");
+
+
+        //Afficher tout les lieux
+        listCity.showByType("V");
+        System.out.println("------------");
+
+        //Lister tout les lieux
+        listCity.showList();
+        System.out.println("------------");
+
+        //affichage sommet voisin
+        listCity.showNeighbor("Lyon");
+        System.out.println("------------");
+
+        //affichage sommet voisin distance 2
+        listCity.showTwoNeighbor("Lyon");
+        System.out.println("------------");
 
     }
 }
