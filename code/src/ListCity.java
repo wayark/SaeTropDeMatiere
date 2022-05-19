@@ -40,19 +40,32 @@ public class ListCity {
     }
 
     public boolean showNeighbor(String place){//show the neighbor of the place wanted in the String variable
-        Place tmp = this.head;
         boolean found = true;
+        Place city;
 
-        while(!tmp.getName().equals(place) && tmp != null){//want to find node with the name of the string
-            tmp = (Place) tmp.next;
-        }
-        if(tmp == null){//if nothing is found we will return false
+        if((city = (Place) findNode(place))==null){//if nothing is found we will return false
             found = false;
         }
         else {
-            tmp.showNeighbor();
+            city.showNeighbor();
         }
 
+        return found;
+    }
+
+    public Node findNode(String place){//find a node by inserting a string
+        Place tmp = this.head;
+        Place found;
+
+        while(tmp != null && !tmp.getName().equals(place) ){//want to find node with the name of the string
+            tmp = (Place) tmp.next;
+        }
+        if(tmp == null){//if nothing is found we will return false
+            found = null;
+        }
+        else {
+            found = tmp;
+        }
         return found;
     }
 }
