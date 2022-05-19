@@ -6,7 +6,7 @@ public class Main {
         CsvReader s = new CsvReader(listCity);
 
         //Recherche selon nom
-       listCity.findNode("Lyon");
+       listCity.findByName("Lyon");
 
 
         //Afficher tout les lieux

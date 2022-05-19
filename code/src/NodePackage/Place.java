@@ -40,12 +40,15 @@ public class Place extends Node{
 
     }
 
-    public void showNeighbor(){
+    public int showNeighbor(){
         Neighbor tmp = this.head;
+        int numberOfNeigbor = 0;
         while(tmp != null){
+            numberOfNeigbor++;
             System.out.println(tmp.getType()+","+ tmp.getName());
             tmp = (Neighbor) tmp.next;
         }
+        return numberOfNeigbor;
     }
 
     public Neighbor getHead() {

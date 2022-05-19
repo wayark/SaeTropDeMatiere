@@ -39,38 +39,33 @@ public class ListCity {
         }
     }
 
-    public boolean showNeighbor(String place){//show the neighbor of the place wanted in the String variable
-        boolean found = true;
+    public int showNeighbor(String place){//show the neighbor of the place wanted in the String variable and return the sum of neigbor
         Place city;
+        int numberOfNeighbor = 0;
 
-        if((city = (Place) findNode(place))==null){//if nothing is found we will return false
-            found = false;
-        }
-        else {
-            city.showNeighbor();
+        if((city = (Place) findByName(place))!=null){
+            numberOfNeighbor = city.showNeighbor();
         }
 
-        return found;
+        return numberOfNeighbor;
     }
 
-    public boolean showTwoNeighbor(String place){
-        boolean found = true;
+    public int showTwoNeighbor(String place){
         Place city;
+        int numberOf2neighbor = 0;
 
-        if((city = (Place) findNode(place))==null){//if nothing is found we will return false
-            found = false;
-        }
-        else {
+        if((city = (Place) findByName(place))!=null){
             Neighbor tmp = city.getHead();
             while (tmp != null){
-                Place distance2 = findNode(tmp.getName());
-                distance2.showNeighbor();
+
+                Place distance2 = findByName(tmp.getName());
+                numberOf2neighbor += distance2.showNeighbor();
 
                 tmp = (Neighbor) tmp.next;
-            }
+        }
         }
 
-        return  found;
+        return  numberOf2neighbor;
     }
 
     public void showByType(String type){
@@ -88,7 +83,7 @@ public class ListCity {
         }
     }
 
-    public Place findNode(String place){//find a node by inserting a string
+    public Place findByName(String place){//find a node by inserting a string
         Node tmp = this.head;
         Place found;
 
@@ -98,5 +93,21 @@ public class ListCity {
         //if nothing is found we will return false
         found = (Place) tmp;
         return found;
+    }
+
+    public void Compare(String cityOne, String cityTwo){
+        Place city1, city2;
+        int opening1,opening2;
+
+        if ((city1 =findByName(cityOne)).getType() == "V" && (city2 =findByName(cityTwo)).getType() == "V" ){
+            System.out.println(cityOne+ " distance two neigbors :");
+            opening1 = showTwoNeighbor(cityOne);
+            System.out.println("=================");
+            System.out.println(cityTwo+ " distance two neigbors :");
+            opening2 = showTwoNeighbor(cityTwo);
+
+            System.out.println(cityOne+ " has "+opening1 + " distance two neigbors");
+            System.out.println(cityTwo+ " has "+opening2 + " distance two neigbors");
+        }
     }
 }
