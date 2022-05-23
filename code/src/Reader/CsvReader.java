@@ -1,7 +1,6 @@
-import NodePackage.Edge;
-import NodePackage.Neighbor;
-import NodePackage.Node;
-import NodePackage.Place;
+package Reader;
+
+import NodePackage.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;

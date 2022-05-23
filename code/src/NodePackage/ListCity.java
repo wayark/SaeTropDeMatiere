@@ -1,3 +1,5 @@
+package NodePackage;
+
 import NodePackage.Neighbor;
 import NodePackage.Node;
 import NodePackage.Place;
@@ -34,7 +36,15 @@ public class ListCity {
     }
 
 
+    public ArrayList<Place> getList(){
+        ArrayList<Place> list = new ArrayList<Place>();
+        Node tmp = this.head;
+        while (tmp != null){
+            tmp = tmp.next;
+        }
 
+        return list;
+    }
     public void showList() {//print all the node present in the list
         Node tmp = this.head;
 

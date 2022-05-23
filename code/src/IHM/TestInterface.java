@@ -1,7 +1,14 @@
 package IHM;
 
+import NodePackage.ListCity;
+import Reader.CsvReader;
+
+import java.io.IOException;
+
 public class TestInterface {
-    public static void main(String[] args){
-        MainWindow mainWindow = new MainWindow();
+    public static void main(String[] args) throws IOException {
+        ListCity listCity = new ListCity();
+        CsvReader s = new CsvReader(listCity);
+        MainWindow mainWindow = new MainWindow(listCity);
     }
 }
