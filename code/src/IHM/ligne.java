@@ -9,6 +9,7 @@ public class ligne extends JPanel{
         }
 
         public static void main(String[] args){
+
             JFrame f = new JFrame("Dessiner une ligne");
             f.getContentPane().add(new ligne());
             f.setSize(250, 250);

@@ -21,16 +21,17 @@ public class Ecran0 extends JFrame {
     public JPanel constrPan(){
 
         JPanel main = new JPanel();
-        JButton affichage0Distance = new JButton("Affichage d'un élément");
-        main.add(affichage0Distance);
-        JButton affichageVoisinDirect = new JButton("Affichage des voisins");
-        main.add(affichageVoisinDirect);
-        JButton affichageVoisin2Distance = new JButton("Affichage des voisins : Distance 2");
-        main.add(affichageVoisin2Distance);
-        JButton Comparer2Villes = new JButton("Comparer des villes");
-        main.add(Comparer2Villes);
-        JButton Distance = new JButton("distance entre deux sites");
-        main.add(Distance);
+        JButton Retour = new JButton("Retour");
+        Retour.addActionListener(event ->
+        {
+            this.dispose();
+        });
+
+        main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
+
+        JLabel jlabel = new JLabel("Affichage d'un élément");
+        main.add(jlabel);
+
 
         return main;
 
