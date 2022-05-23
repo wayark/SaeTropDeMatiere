@@ -16,7 +16,7 @@ public class ListCity {
         return head == null;
     }
 
-    public Place addEnd(String name, String type) {
+    public Place addEnd(String name, String type) {//place the node at the end of the list
         Place retour;
         if (isEmpty()) {
             this.head = new Place(name, type, null);
@@ -35,7 +35,7 @@ public class ListCity {
 
 
 
-    public void showList() {
+    public void showList() {//print all the node present in the list
         Node tmp = this.head;
 
         while (tmp != null) {
@@ -44,7 +44,7 @@ public class ListCity {
         }
     }
 
-    public int showNeighbor(String place) {//show the neighbor of the place wanted in the String variable and return the sum of neigbors
+    public int showNeighbor(String place) {//show the neighbor of the gived place in the String variable and return the sum of neigbors
         Place city;
         int numberOfNeighbor = 0;
 
@@ -55,7 +55,7 @@ public class ListCity {
         return numberOfNeighbor;
     }
 
-    public int showTwoNeighbor(String place) {
+    public int showTwoNeighbor(String place) {//show all the neighbors that are at distance 2 of the place given
         Place city;
         int numberOf2neighbor = 0;
 
@@ -75,7 +75,7 @@ public class ListCity {
 
 
 
-    public void showByType(String type) {
+    public void showByType(String type) {//show all the node that have the type given
 
         type = type.substring(0, 1);
 
@@ -90,6 +90,8 @@ public class ListCity {
             }
         }
     }
+
+
 
     public Place findByName(String place) {//find a node by inserting a string
         Node tmp = this.head;
@@ -201,6 +203,7 @@ public class ListCity {
         }
         return nbrOfType;
     }
+
 
 
     public ArrayList<Node> findShortestPath(){
