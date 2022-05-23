@@ -10,5 +10,6 @@ public class TestInterface {
         ListCity listCity = new ListCity();
         CsvReader s = new CsvReader(listCity);
         MainWindow mainWindow = new MainWindow(listCity);
+        Ecran0 ecran = new Ecran0();
     }
 }
