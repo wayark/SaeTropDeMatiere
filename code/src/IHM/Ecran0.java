@@ -2,21 +2,14 @@ package IHM;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Graphics;
 
-public class MainWindow extends JFrame {
-    public MainWindow() throws HeadlessException {
+public class Ecran0 extends JFrame {
+    public Ecran0() throws HeadlessException {
         setup();
-    }
-    @Override
-    public void paint(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.drawOval(150, 150, 100, 100);
-
     }
 
     public void setup(){
-        setTitle("Graph Map Analysis");
+        setTitle("Ecran 0");
         setSize(1000,500);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -30,7 +23,6 @@ public class MainWindow extends JFrame {
         JPanel main = new JPanel();
         JButton affichage0Distance = new JButton("Affichage d'un élément");
         main.add(affichage0Distance);
-        affichage0Distance.addActionListener();
         JButton affichageVoisinDirect = new JButton("Affichage des voisins");
         main.add(affichageVoisinDirect);
         JButton affichageVoisin2Distance = new JButton("Affichage des voisins : Distance 2");
