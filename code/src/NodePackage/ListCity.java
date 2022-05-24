@@ -35,11 +35,21 @@ public class ListCity {
         return retour;
     }
 
+    public int size(){
+        Place tmp = this.head;
+        int counter = 0;
+        while (tmp !=null){
+            counter++;
+            tmp = (Place) tmp.next;
+        }
+        return  counter;
+    }
 
     public ArrayList<Place> getList(){
         ArrayList<Place> list = new ArrayList<Place>();
         Node tmp = this.head;
         while (tmp != null){
+            list.add((Place) tmp);
             tmp = tmp.next;
         }
 

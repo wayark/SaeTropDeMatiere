@@ -5,10 +5,11 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        ListCity listCity = new ListCity();
-        CsvReader s = new CsvReader(listCity);
 
-        //Recherche selon nom
+        ListCity l = new ListCity();
+        CsvReader c = new CsvReader(l);
+
+      /*  //Recherche selon nom
        listCity.findByName("Lyon");
 
 
@@ -26,7 +27,7 @@ public class Main {
 
         //affichage sommet voisin distance 2
         listCity.showTwoNeighbor("Lyon");
-        System.out.println("------------");
+        System.out.println("------------");*/
 
     }
 }

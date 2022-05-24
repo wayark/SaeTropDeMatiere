@@ -2,6 +2,8 @@ package NodePackage;
 
 public class Place extends Node{
     private Neighbor head;
+    private int x;
+    private int y;
 
     public Place(String name, String type, Node next) {
         super(name, type, next);

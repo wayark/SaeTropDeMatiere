@@ -1,17 +1,17 @@
 package IHM;
 
+
 import NodePackage.ListCity;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Graphics;
-import java.awt.geom.Ellipse2D;
 
 public class MainWindow extends JFrame {
-    private ListCity listVille;
-    public MainWindow(ListCity listVille) throws HeadlessException {
+    private ListCity listCity;
+
+    public MainWindow(ListCity listCity) throws HeadlessException {
+        this.listCity = listCity;
         setup();
-        this.listVille = listVille;
     }
 
     public void setup(){
@@ -20,7 +20,7 @@ public class MainWindow extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setContentPane(new MainPanel(listVille));
+        setContentPane(new MainPanel(listCity, this));
         setVisible(true);
     }
 
