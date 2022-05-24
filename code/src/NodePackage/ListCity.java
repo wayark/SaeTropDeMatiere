@@ -59,6 +59,7 @@ public class ListCity {
 
         return list;
     }
+
     public void showList() {//print all the node present in the list
         Node tmp = this.head;
 
@@ -226,6 +227,19 @@ public class ListCity {
             neighbor = (Neighbor) neighbor.next;
         }
         return nbrOfType;
+    }
+
+
+    public boolean isClicked(int xClicked, int yClicked){
+        Place tmp = head;
+        boolean found =false;
+        while (tmp !=null && !found){
+            if((xClicked >= tmp.getX() && xClicked<= tmp.getX() +10) && (yClicked >= tmp.getY() && yClicked<= tmp.getY() +10)){
+                found = true;
+            }
+            tmp = (Place) tmp.next;
+        }
+        return found;
     }
 
 

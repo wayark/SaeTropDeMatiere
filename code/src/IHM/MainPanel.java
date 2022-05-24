@@ -52,7 +52,7 @@ public class MainPanel extends JPanel {
                 super.mouseClicked(e);
                 x = e.getX();
                 y = e.getY();
-                System.out.println(x+","+y);
+                System.out.println(listCity.isClicked(x,y));
             }
         });
     }
@@ -72,8 +72,8 @@ public class MainPanel extends JPanel {
 
 
         while (tmp !=null){
-            c[i] = new Ellipse2D.Double((currentX = r.nextInt(100,d.width-100)),(currentY = r.nextInt(100,d.height-100)),10,10);
-            g2.drawString(tmp.getName(),currentX-20,currentY-5);
+            c[i] = new Ellipse2D.Double((currentX = r.nextInt(100,d.width-100)),(currentY = r.nextInt(100,d.height-100)),15,15);
+            g2.drawString(tmp.getName(),currentX,currentY-5);
             tmp.setX(currentX);
             tmp.setY(currentY);
             g2.draw(c[i]);
