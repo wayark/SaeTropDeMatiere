@@ -2,7 +2,6 @@ package NodePackage;
 
 public class Place extends Node{
     private Neighbor head;
-    private int x,y;
 
     public Place(String name, String type, Node next) {
         super(name, type, next);
@@ -49,19 +48,5 @@ public class Place extends Node{
         return head;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
 
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
 }

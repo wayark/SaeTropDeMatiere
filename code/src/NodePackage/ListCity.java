@@ -131,7 +131,6 @@ public class ListCity {
         for (Edge e : n){
             edgeList.remove(e);
         }
-        showEdge();
     }
 
 

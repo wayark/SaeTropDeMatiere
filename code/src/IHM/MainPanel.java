@@ -1,5 +1,6 @@
 package IHM;
 
+import NodePackage.Edge;
 import NodePackage.ListCity;
 import NodePackage.Place;
 
@@ -9,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -17,13 +19,16 @@ public class MainPanel extends JPanel {
     private int y;
     JFrame f;
     ListCity listCity;
-    Ellipse2D.Double[] c;
+    Ellipse2D.Double[] node;
+    Line2D.Double[] line;
+
 
     public MainPanel(ListCity listCity, JFrame f) {
         super();
         this.f = f;
         this.listCity = listCity;
-        c = new Ellipse2D.Double[listCity.size()];
+        node = new Ellipse2D.Double[listCity.size()];
+        line = new Line2D.Double[listCity.getEdgeList().size()];
         setBorder(BorderFactory.createLineBorder(Color.gray));
         constpan();
 
@@ -63,21 +68,21 @@ public class MainPanel extends JPanel {
         g2.setColor(Color.black);
 
         Dimension d = f.getSize();
-        int i = 0;
+        int i;
         int currentX;
         int currentY;
 
         Random r = new Random();
         Place tmp = listCity.getHead();
 
-
+        i=0;
         while (tmp !=null){
             g2.setColor(Color.black);
-            c[i] = new Ellipse2D.Double((currentX = r.nextInt(100,d.width-100)),(currentY = r.nextInt(100,d.height-100)),15,15);
-            g2.drawString(tmp.getName(),currentX,currentY-5);
+            node[i] = new Ellipse2D.Double((currentX = r.nextInt(100,d.width-100)),(currentY = r.nextInt(100,d.height-100)),15,15);
+            g2.drawString(tmp.getType()+","+tmp.getName(),currentX,currentY-5);
             tmp.setX(currentX);
             tmp.setY(currentY);
-            g2.draw(c[i]);
+            g2.draw(node[i]);
 
             if(tmp.getType().equals("V")){
                 g2.setColor(Color.green);
@@ -88,13 +93,19 @@ public class MainPanel extends JPanel {
             else if(tmp.getType().equals("R")){
                 g2.setColor(Color.red);
             }
-            g2.fill(c[i]);
+            g2.fill(node[i]);
 
             i++;
             tmp = (Place) tmp.next;
         }
+
+        i=0;
+        g2.setStroke(new BasicStroke(2f));
+        for (Edge e : listCity.getEdgeList()){
+            line[i] = new Line2D.Double(e.getLinked1().getX()+5,e.getLinked1().getY()+5,e.getLinked2().getX()+5,e.getLinked2().getY()+5);
+            g2.draw(line[i]);
+            i++;
+        }
     }
-
-
 
 }

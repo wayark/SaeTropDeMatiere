@@ -3,6 +3,7 @@ public class Node {
     private String name;
     private String type;
     public Node next;
+    private int x,y;
 
     public Node(String name, String type,Node next) {
         this.type = type;
@@ -33,5 +34,21 @@ public class Node {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }
