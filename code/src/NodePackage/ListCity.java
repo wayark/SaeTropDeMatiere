@@ -116,17 +116,20 @@ public class ListCity {
 
     public void removeDoubleEdge(){// remove edge that have doubled because of the csv reading
         ArrayList<Edge> tmp = edgeList;
-        ArrayList<Integer> n = new ArrayList<Integer>();
+        ArrayList<Edge> n = new ArrayList<Edge>();
+        ArrayList<Node> treated = new ArrayList<Node>();
 
 
-        System.out.println(edgeList.get(82).getLinked2()==tmp.get(0).getLinked1());
         for (Edge edge : tmp) {
-            System.out.println(edge.getLinked1());
             for (int i = 0 ; i< edgeList.size() ; i++){
-                if (edge.getLinked1() == edgeList.get(i).getLinked2() && edge.getLinked2() == edgeList.get(i).getLinked1()) {
-                    
+                if (edge.getLinked1() == edgeList.get(i).getLinked2() && !treated.contains(edgeList.get(i).getLinked2()) && edge.getLinked2() == edgeList.get(i).getLinked1()) {
+                    n.add(edgeList.get(i));
                 }
             }
+            treated.add(edge.getLinked1());
+        }
+        for (Edge e : n){
+            edgeList.remove(e);
         }
         showEdge();
     }
