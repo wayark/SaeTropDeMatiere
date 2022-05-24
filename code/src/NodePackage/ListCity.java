@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ListCity {
-    Place head;
+    private Place head;
 
     public ListCity() {
         head = null;
@@ -33,6 +33,10 @@ public class ListCity {
             retour = (Place) tmp.next;
         }
         return retour;
+    }
+
+    public Place getHead(){
+        return head;
     }
 
     public int size(){

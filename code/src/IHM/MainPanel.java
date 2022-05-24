@@ -5,6 +5,7 @@ import NodePackage.Place;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
@@ -45,26 +46,13 @@ public class MainPanel extends JPanel {
 
 
 
-        this.addMouseListener(new MouseListener() {
+        this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
                 x = e.getX();
                 y = e.getY();
                 System.out.println(x+","+y);
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-            @Override
-            public void mouseEntered(MouseEvent e) {
-            }
-            @Override
-            public void mouseExited(MouseEvent e) {
             }
         });
     }
@@ -72,31 +60,28 @@ public class MainPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
-
-        Dimension d = f.getSize();
         g2.setColor(Color.black);
 
+        Dimension d = f.getSize();
+        int i = 0;
+        int currentX;
+        int currentY;
 
         Random r = new Random();
-        Ellipse2D.Double c = new Ellipse2D.Double(100, 100, 50, 50);
-        Ellipse2D.Double c1 = new Ellipse2D.Double(250, 200, 50, 50);
-        Ellipse2D.Double c2 = new Ellipse2D.Double(500, 220, 50, 50);
-        Ellipse2D.Double c3 = new Ellipse2D.Double(950, 450, 50, 50);
-        g2.draw(c);
-        g2.draw(c1);
-        g2.draw(c2);
-        g2.draw(c3);
-        g2.fill(c);
-        g2.fill(c1);
-        g2.fill(c2);
-        g2.fill(c3);
-        /*for (int i = 0 ; i < listCity.size(); i++){
-            c[i] = new Ellipse2D.Double(100,10+(r.nextInt()%d.height),10,10);
-            System.out.println(d.width);
-            System.out.println(d.height);
+        Place tmp = listCity.getHead();
+
+
+        while (tmp !=null){
+            c[i] = new Ellipse2D.Double((currentX = r.nextInt(100,d.width-100)),(currentY = r.nextInt(100,d.height-100)),10,10);
+            g2.drawString(tmp.getName(),currentX-20,currentY-5);
+            tmp.setX(currentX);
+            tmp.setY(currentY);
             g2.draw(c[i]);
             g2.fill(c[i]);
-        }*/
+
+            i++;
+            tmp = (Place) tmp.next;
+        }
     }
 
 
