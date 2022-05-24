@@ -38,10 +38,12 @@ public class CsvReader {
 
 
                 Neighbor currentNeighbor =(Neighbor) currentPlace.addEnd(neighbor[1],neighbor[0]);
-                currentNeighbor.setEdge(link[0],Integer.parseInt(link[1]));
+                listeVille.getEdgeList().add(new Edge(currentPlace,currentNeighbor,Integer.parseInt(link[1]),link[0]));
             }
 
         }
+        listeVille.convertNeighborToPlace();
+        listeVille.removeDoubleEdge();
     }
     
 }

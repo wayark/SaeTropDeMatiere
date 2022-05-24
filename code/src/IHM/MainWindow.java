@@ -16,7 +16,7 @@ public class MainWindow extends JFrame {
 
     public void setup(){
         setTitle("Graph Map Analysis");
-        setSize(1000,500);
+        setSize(1200,700);
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

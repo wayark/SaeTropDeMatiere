@@ -5,13 +5,17 @@ import NodePackage.Node;
 import NodePackage.Place;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Objects;
 
 public class ListCity {
+
     private Place head;
+    private ArrayList<Edge> edgeList;
 
     public ListCity() {
         head = null;
+        edgeList = new ArrayList<Edge>();
     }
 
     public boolean isEmpty() {
@@ -33,10 +37,6 @@ public class ListCity {
             retour = (Place) tmp.next;
         }
         return retour;
-    }
-
-    public Place getHead(){
-        return head;
     }
 
     public int size(){
@@ -69,6 +69,14 @@ public class ListCity {
         }
     }
 
+    public void showEdge(){
+        int i = 0;
+        for (Edge e : edgeList){
+            System.out.println(i+ ".   " + e.toString());
+            i++;
+        }
+    }
+
     public int showNeighbor(String place) {//show the neighbor of the gived place in the String variable and return the sum of neigbors
         Place city;
         int numberOfNeighbor = 0;
@@ -96,6 +104,31 @@ public class ListCity {
         }
 
         return numberOf2neighbor;
+    }
+
+    public void convertNeighborToPlace(){//convert all the Neigbor class in the edge list by their equivalent in Place class
+        Place tmp;
+        for(Edge e : edgeList){
+            tmp = findByName(e.getLinked2().getName());
+            e.setLinked2(tmp);
+        }
+    }
+
+    public void removeDoubleEdge(){// remove edge that have doubled because of the csv reading
+        ArrayList<Edge> tmp = edgeList;
+        ArrayList<Integer> n = new ArrayList<Integer>();
+
+
+        System.out.println(edgeList.get(82).getLinked2()==tmp.get(0).getLinked1());
+        for (Edge edge : tmp) {
+            System.out.println(edge.getLinked1());
+            for (int i = 0 ; i< edgeList.size() ; i++){
+                if (edge.getLinked1() == edgeList.get(i).getLinked2() && edge.getLinked2() == edgeList.get(i).getLinked1()) {
+                    
+                }
+            }
+        }
+        showEdge();
     }
 
 
@@ -234,6 +267,7 @@ public class ListCity {
         Place tmp = head;
         boolean found =false;
         while (tmp !=null && !found){
+
             if((xClicked >= tmp.getX() && xClicked<= tmp.getX() +10) && (yClicked >= tmp.getY() && yClicked<= tmp.getY() +10)){
                 found = true;
             }
@@ -242,11 +276,17 @@ public class ListCity {
         return found;
     }
 
-
-
     public ArrayList<Node> findShortestPath(){
         ArrayList<Node> shortestPath = new ArrayList<Node>();
 
         return shortestPath;
+    }
+
+    public Place getHead(){
+        return head;
+    }
+
+    public ArrayList<Edge> getEdgeList() {
+        return edgeList;
     }
 }

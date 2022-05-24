@@ -72,11 +72,22 @@ public class MainPanel extends JPanel {
 
 
         while (tmp !=null){
+            g2.setColor(Color.black);
             c[i] = new Ellipse2D.Double((currentX = r.nextInt(100,d.width-100)),(currentY = r.nextInt(100,d.height-100)),15,15);
             g2.drawString(tmp.getName(),currentX,currentY-5);
             tmp.setX(currentX);
             tmp.setY(currentY);
             g2.draw(c[i]);
+
+            if(tmp.getType().equals("V")){
+                g2.setColor(Color.green);
+            }
+            else if(tmp.getType().equals("L")){
+                g2.setColor(Color.orange);
+            }
+            else if(tmp.getType().equals("R")){
+                g2.setColor(Color.red);
+            }
             g2.fill(c[i]);
 
             i++;
