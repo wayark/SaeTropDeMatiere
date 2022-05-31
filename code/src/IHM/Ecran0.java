@@ -26,6 +26,7 @@ public class Ecran0 extends JFrame {
         {
             this.dispose();
         });
+        main.add(Retour);
 
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
 
