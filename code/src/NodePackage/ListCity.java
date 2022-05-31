@@ -122,12 +122,17 @@ public class ListCity {
 
         for (Edge edge : tmp) {
             for (int i = 0 ; i< edgeList.size() ; i++){
-                if (edge.getLinked1() == edgeList.get(i).getLinked2() && !treated.contains(edgeList.get(i).getLinked2()) && edge.getLinked2() == edgeList.get(i).getLinked1()) {
+                if (edge.getLinked1() == edgeList.get(i).getLinked2() && edge.getLinked2() == edgeList.get(i).getLinked1() && !treated.contains(edgeList.get(i).getLinked2())) {
                     n.add(edgeList.get(i));
                 }
             }
             treated.add(edge.getLinked1());
         }
+
+        n.remove(edgeList.get(44));
+        n.remove(edgeList.get(59));
+        n.remove(edgeList.get(73));
+
         for (Edge e : n){
             edgeList.remove(e);
         }

@@ -35,19 +35,25 @@ public class MainPanel extends JPanel {
     }
     private void constpan(){
 
+        JLabel n = new JLabel("salut");
+        JPanel left = new JPanel();
+        left.setLayout(new BoxLayout(left,BoxLayout.Y_AXIS));
+        left.setBackground(Color.red);
 
-        JButton affichage0Distance = new JButton("Affichage d'un élément");
-        JButton affichageVoisinDirect = new JButton("Affichage des voisins");
-        JButton affichageVoisin2Distance = new JButton("Affichage des voisins : Distance 2");
-        JButton Comparer2Villes = new JButton("Comparer des villes");
-        JButton Distance = new JButton("distance entre deux sites");
+        JPanel middle = new JPanel();
+        middle.setLayout(new BoxLayout(middle,BoxLayout.Y_AXIS));
+        middle.setBackground(Color.green);
 
-        this.add(Comparer2Villes);
-        this.add(affichageVoisin2Distance);
-        this.add(affichageVoisinDirect);
-        this.add(affichage0Distance);
-        this.add(Distance);
-        this.revalidate();
+        JPanel right = new JPanel();
+        right.setLayout(new BoxLayout(right,BoxLayout.Y_AXIS));
+        right.setBackground(Color.yellow);
+        right.add(n);
+
+        this.setLayout(new GridLayout(1,3));
+        this.add(left);
+        this.add(middle);
+        this.add(right);
+
 
 
 
@@ -101,6 +107,8 @@ public class MainPanel extends JPanel {
 
         i=0;
         g2.setStroke(new BasicStroke(2f));
+
+
         for (Edge e : listCity.getEdgeList()){
             line[i] = new Line2D.Double(e.getLinked1().getX()+5,e.getLinked1().getY()+5,e.getLinked2().getX()+5,e.getLinked2().getY()+5);
             g2.draw(line[i]);
