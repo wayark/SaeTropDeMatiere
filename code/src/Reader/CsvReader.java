@@ -16,7 +16,7 @@ public class CsvReader {
 
 
     private void listCreation() throws IOException {
-        BufferedReader br = new BufferedReader(new java.io.FileReader("code\\src\\Graph.csv"));
+        BufferedReader br = new BufferedReader(new java.io.FileReader("src\\Graph.csv"));
         String line = "";
 
         while ((line = br.readLine())!= null){  //read each line of the csv doc

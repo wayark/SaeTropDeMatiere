@@ -51,12 +51,12 @@ public class MainWindow extends JFrame {
         menu.add(item4);
         menu.add(item5);
 
-        item1.addActionListener(new ActionListener() {
+        /*item1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Ecran0 e0 = new Ecran0();
             }
-        });
+        });*/
 
         item2.addActionListener(new ActionListener() {
             @Override

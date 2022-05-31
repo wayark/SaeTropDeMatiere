@@ -2,18 +2,17 @@ package IHM;
 
 import NodePackage.Edge;
 import NodePackage.ListCity;
+import NodePackage.Neighbor;
 import NodePackage.Place;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.util.Random;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
@@ -39,13 +38,26 @@ public class Ecran1 extends JPanel{
     }
 
 
-    public JPanel constrPan(){
+    public void constrPan(){
+        Neighbor neighbor;
         JPanel main = new JPanel();
 
         JLabel jLabel = new JLabel("Affichage des voisins direct");
         main.add(jLabel);
+        JTextField jTextField = new JTextField();
+        main.add(jTextField);
+        JButton jButton =new JButton("Valider");
+        jButton.addActionListener(
+                new ActionListener(){
+                    public void actionPerformed(ActionEvent event){
+                        String nomVille = jTextField.getText();
 
-        return main;
+                    }
+                }
+        );
+        main.add(jButton);
+
+        this.add(main);
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -63,10 +75,8 @@ public class Ecran1 extends JPanel{
         i=0;
         while (tmp !=null){
             g2.setColor(Color.black);
-            node[i] = new Ellipse2D.Double((currentX = r.nextInt(100,d.width-100)),(currentY = r.nextInt(100,d.height-100)),15,15);
-            g2.drawString(tmp.getType()+","+tmp.getName(),currentX,currentY-5);
-            tmp.setX(currentX);
-            tmp.setY(currentY);
+            node[i] = new Ellipse2D.Double(tmp.getX(),tmp.getY(),15,15);
+            g2.drawString(tmp.getType()+","+tmp.getName(),tmp.getX(),tmp.getY());
             g2.draw(node[i]);
 
             if(tmp.getType().equals("V")){
