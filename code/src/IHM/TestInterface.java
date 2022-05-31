@@ -1,10 +1,10 @@
 package IHM;
 
 
-import NodePackage.ListCity;
-import Reader.CsvReader;
 
 import java.io.IOException;
+import NodePackage.ListCity;
+import Reader.CsvReader;
 
 public class TestInterface {
     public static void main(String[] args) throws IOException {
