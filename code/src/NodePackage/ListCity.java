@@ -24,10 +24,10 @@ public class ListCity {
     }
 
     public Place addEnd(String name, String type) {//place the node at the end of the list
-        Place retour;
+        Place nodeCreate;
         if (isEmpty()) {
             this.head = new Place(name, type, null);
-            retour = this.head;
+            nodeCreate = this.head;
         } else {
 
             Node tmp = this.head;
@@ -35,9 +35,9 @@ public class ListCity {
                 tmp = tmp.next;
             }
             tmp.next = new Place(name, type, null);
-            retour = (Place) tmp.next;
+            nodeCreate = (Place) tmp.next;
         }
-        return retour;
+        return nodeCreate;
     }
 
     public int size(){
@@ -119,7 +119,6 @@ public class ListCity {
         ArrayList<Edge> tmp = edgeList;
         ArrayList<Edge> n = new ArrayList<Edge>();
         ArrayList<Node> treated = new ArrayList<Node>();
-
         for (Edge edge : tmp) {
             for (int i = 0 ; i< edgeList.size() ; i++){
                 if (edge.getLinked1() == edgeList.get(i).getLinked2() && edge.getLinked2() == edgeList.get(i).getLinked1() && !treated.contains(edgeList.get(i).getLinked2())) {
@@ -131,6 +130,7 @@ public class ListCity {
 
         n.remove(edgeList.get(44));
         n.remove(edgeList.get(59));
+        n.remove(edgeList.get(60));
         n.remove(edgeList.get(67));
         n.remove(edgeList.get(73));
 
@@ -217,8 +217,8 @@ public class ListCity {
     private void gastronomic(String cityOne, String cityTwo) {//show the number of restaurent between two city
         int restaurent1 = 0, restaurent2 = 0;
 
-        restaurent1 = countByType(cityOne, "R");
-        restaurent2 = countByType(cityTwo, "R");
+        restaurent1 = countNeighborByType(cityOne, "R");
+        restaurent2 = countNeighborByType(cityTwo, "R");
 
         System.out.println(cityOne + " has "+ restaurent1 + " restaurant of distance 2");
         System.out.println(cityTwo + " a "+ restaurent2 + " restaurant of distance 2");
@@ -235,8 +235,8 @@ public class ListCity {
     private void culturalPlaces(String cityOne, String cityTwo){//show the number of cultural place between two city
         int culture1 = 0, culture2 = 0;
 
-        culture1 = countByType(cityOne, "L");
-        culture2 = countByType(cityTwo, "L");
+        culture1 = countNeighborByType(cityOne, "L");
+        culture2 = countNeighborByType(cityTwo, "L");
 
         System.out.println(cityOne + " has "+ culture1 + " cultural place of distance 2");
         System.out.println(cityTwo + " has "+ culture2 + " cultural place of distance 2");
@@ -250,7 +250,7 @@ public class ListCity {
         
     }
 
-    private int countByType(String city, String type){
+    private int countNeighborByType(String city, String type){
 
         int nbrOfType = 0;
         Place cityNode = (Place) findByName(city);//get the node with the same name as the string
@@ -270,6 +270,8 @@ public class ListCity {
         return nbrOfType;
     }
 
+
+
     public int countList(){
         int counter = 0;
         Place tmp = head;
@@ -278,6 +280,22 @@ public class ListCity {
             tmp = (Place) tmp.next;
         }
         return counter;
+    }
+
+    public int countByType(String type){
+        int counter = 0;
+        Place tmp = head;
+        while (tmp !=null){
+            if (tmp.getType().equals(type)){
+                counter++;
+            }
+            tmp = (Place) tmp.next;
+        }
+        return counter;
+    }
+
+    public int countEdge(){
+        return edgeList.size();
     }
 
 

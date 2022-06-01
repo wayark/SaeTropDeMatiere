@@ -25,6 +25,8 @@ public class CsvReader {
             String[] city = firstTreatment[0].split(",");
 
             Place currentPlace = (Place) listeVille.addEnd(city[1],city[0]);//create the city node and keep it to add the neighbors later
+            currentPlace.setX(Integer.parseInt(city[2]));
+            currentPlace.setY(Integer.parseInt(city[3]));
 
             String[] secondTreatment = firstTreatment[1].split(";",0);//seperate all the neighbors
 

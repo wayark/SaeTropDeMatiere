@@ -1,31 +1,31 @@
-V,Lyon:D,3::R,McDo-GrangeBlanche;N,10::V,Venissieux;A,12::V,Corbas;N,5::L,Confluence;N,8::L,Bellecour;N,6::L,Parc tete d'or;D,4::L,Part-Dieu;A,15::V,Villeurbanne;A,20::V,Bron
-V,Villeurbanne:A,15::V,Lyon;D,3::V,Bron;A,5::V,Chassieu;D,6::R,Tasty pizza
-V,Bron:A,20::V,Lyon;N,3::R,McDo-GrangeBlanche;A,6::V,Vaulx-en-Velin;D,2::R,Durak kebab;N,6::V,Lissieu;A,12::V,Solaize;D,3::V,Villeurbanne
-V,Meyzieu:N,10::V,Charly;A,9::V,Vaulx-en-Velin;N,8::V,Venissieux;A,8::V,Ecully
-V,Venissieux:N,10::V,Lyon;N,8::V,Meyzieu
-V,Dardilly:A,10::V,Vernaison;N,4::L,Parc tete d'or;A,8::V,Chassieu;N,3::R,L'emulsion
-V,Givors:D,8::L,Feyssine;A,2::V,Solaize;N,3::R,Tasty pizza
-V,Ecully:A,8::V,Meyzieu;D,1::V,Corbas
-V,Vaulx-en-Velin:N,5::L,Carre de soie;D,3::R,Durak kebab;A,6::V,Bron;D,4::R,McDo-GrangeBlanche;A,9::V,Meyzieu
-V,Lissieu:D,3::V,Solaize;N,6::V,Bron;D,10::L,Lac de miribel
-V,Limonest:N,10::L,Bellecour
-V,Charly:N,10::V,Meyzieu
-V,Chassieu:D,6::R,L'emulsion;N,5::R,Tasty pizza;A,5::V,Villeurbanne;A,3::L,Part-Dieu;A,8::V,Dardilly
-V,Corbas:A,12::V,Lyon;D,1::V,Ecully;A,3::V,Grigny;D,3::L,Confluence
-V,Grigny:A,3::V,Corbas;D,6::V,Irigny
-V,Irigny:N,6::L,Confluence;D,6::V,Grigny;D,3::R,K217
-V,Vernaison:A,10::V,Dardilly
-V,Solaize:D,3::V,Lissieu;A,12::V,Bron;A,2::V,Givors
-L,Confluence:D,3::V,Corbas;N,6::V,Irigny;D,6::R,Ninkasi;N,5::V,Lyon
-L,Carre de soie:N,5::V,Vaulx-en-Velin
-L,Lac de miribel:D,10::V,Lissieu
-L,Parc tete d'or:N,4::V,Dardilly;D,3::L,Part-Dieu;N,6::V,Lyon;N,6::L,Bellecour
-L,Feyssine:D,8::V,Givors
-L,Bellecour:N,6::L,Parc tete d'or;N,10::V,Limonest;N,8::V,Lyon
-L,Part-Dieu:A,3::V,Chassieu;D,4::V,Lyon;D,3::L,Parc tete d'or
-R,McDo-GrangeBlanche:N,3::V,Bron;D,4::V,Vaulx-en-Velin;D,3::V,Lyon
-R,Durak kebab:D,3::V,Vaulx-en-Velin;D,2::V,Bron
-R,Tasty pizza:N,3::V,Givors;D,6::V,Villeurbanne;N,5::V,Chassieu
-R,Ninkasi:D,6::L,Confluence
-R,K217:D,3::V,Irigny
-R,L'emulsion:N,3::V,Dardilly;D,6::V,Chassieu
+V,Lyon,450,325:D,3::R,McDo-GrangeBlanche;N,10::V,Venissieux;A,12::V,Corbas;N,5::L,Confluence;N,8::L,Bellecour;N,6::L,Parc tete d'or;D,4::L,Part-Dieu;A,15::V,Villeurbanne;A,20::V,Bron
+V,Villeurbanne,475,200:A,15::V,Lyon;D,3::V,Bron;A,5::V,Chassieu;D,6::R,Tasty pizza
+V,Bron,600,250:A,20::V,Lyon;N,3::R,McDo-GrangeBlanche;A,6::V,Vaulx-en-Velin;D,2::R,Durak kebab;N,6::V,Lissieu;A,12::V,Solaize;D,3::V,Villeurbanne
+V,Meyzieu,750,500:N,10::V,Charly;A,9::V,Vaulx-en-Velin;N,8::V,Venissieux;A,8::V,Ecully
+V,Venissieux,600,410:N,10::V,Lyon;N,8::V,Meyzieu
+V,Dardilly,225,170:A,10::V,Vernaison;N,4::L,Parc tete d'or;A,8::V,Chassieu;N,3::R,L'emulsion
+V,Givors,500,100:D,8::L,Feyssine;A,2::V,Solaize;N,3::R,Tasty pizza
+V,Ecully,615,650:A,8::V,Meyzieu;D,1::V,Corbas
+V,Vaulx-en-Velin,745,365:N,5::L,Carre de soie;D,3::R,Durak kebab;A,6::V,Bron;D,4::R,McDo-GrangeBlanche;A,9::V,Meyzieu
+V,Lissieu,900,200:D,3::V,Solaize;N,6::V,Bron;D,10::L,Lac de miribel
+V,Limonest,80,400:N,10::L,Bellecour
+V,Charly,910,525:N,10::V,Meyzieu
+V,Chassieu,340,110:D,6::R,L'emulsion;N,5::R,Tasty pizza;A,5::V,Villeurbanne;A,3::L,Part-Dieu;A,8::V,Dardilly
+V,Corbas,460,515:A,12::V,Lyon;D,1::V,Ecully;A,3::V,Grigny;D,3::L,Confluence
+V,Grigny,380,635:A,3::V,Corbas;D,6::V,Irigny
+V,Irigny,315,575:N,6::L,Confluence;D,6::V,Grigny;D,3::R,K217
+V,Vernaison,100,125:A,10::V,Dardilly
+V,Solaize,660,150:D,3::V,Lissieu;A,12::V,Bron;A,2::V,Givors
+L,Confluence,360,450:D,3::V,Corbas;N,6::V,Irigny;D,6::R,Ninkasi;N,5::V,Lyon
+L,Carre de soie,925,425:N,5::V,Vaulx-en-Velin
+L,Lac de miribel,1000,220:D,10::V,Lissieu
+L,Parc tete d'or,175,300:N,4::V,Dardilly;D,3::L,Part-Dieu;N,6::V,Lyon;N,6::L,Bellecour
+L,Feyssine,600,50:D,8::V,Givors
+L,Bellecour,175,375:N,6::L,Parc tete d'or;N,10::V,Limonest;N,8::V,Lyon
+L,Part-Dieu,250,270:A,3::V,Chassieu;D,4::V,Lyon;D,3::L,Parc tete d'or
+R,McDo-GrangeBlanche,640,340:N,3::V,Bron;D,4::V,Vaulx-en-Velin;D,3::V,Lyon
+R,Durak kebab,850,320:D,3::V,Vaulx-en-Velin;D,2::V,Bron
+R,Tasty pizza,420,60:N,3::V,Givors;D,6::V,Villeurbanne;N,5::V,Chassieu
+R,Ninkasi,180,480:D,6::L,Confluence
+R,K217,150,560:D,3::V,Irigny
+R,L'emulsion,300,80:N,3::V,Dardilly;D,6::V,Chassieu

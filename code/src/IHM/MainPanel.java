@@ -37,18 +37,39 @@ public class MainPanel extends JPanel {
         left.setSize(300,0);
         left.setPreferredSize(new Dimension(300,0));
 
-        JLabel size = new JLabel("Taille du graphe :"+String.valueOf(listCity.countList()));
-        JLabel type = new JLabel("Type de Noeud :");
-        
+        JLabel size = new JLabel("Taille du graphe :"+ String.valueOf(listCity.countList()));
+        JLabel type = new JLabel("Nombre de noeud selon le type :");
+        JLabel city = new JLabel("Ville : "+String.valueOf(listCity.countByType("V")));
+        JLabel place = new JLabel("Lieu Culturel : "+String.valueOf(listCity.countByType("L")));
+        JLabel restaurant = new JLabel("Restaurant : "+String.valueOf(listCity.countByType("R")));
+        JLabel edge = new JLabel("Nombre de lien : "+String.valueOf(listCity.countEdge()));
+
+        size.setAlignmentX(CENTER_ALIGNMENT);
+        type.setAlignmentX(CENTER_ALIGNMENT);
+        city.setAlignmentX(CENTER_ALIGNMENT);
+        place.setAlignmentX(CENTER_ALIGNMENT);
+        restaurant.setAlignmentX(CENTER_ALIGNMENT);
+        edge.setAlignmentX(CENTER_ALIGNMENT);
+
+
+        left.add(new JLabel(" "));
+        left.add(size);
+        left.add(new JLabel(" "));
+        left.add(type);
+        left.add(city);
+        left.add(place);
+        left.add(restaurant);
+        left.add(new JLabel(" "));
+        left.add(edge);
 
 
 
-        left.add(n);
+
 
         JPanel graph = new GraphDisplay(listCity,f);
         graph.setLayout(new BoxLayout(graph,BoxLayout.Y_AXIS));
-        graph.setSize(800,0);
-        graph.setPreferredSize(new Dimension(800,0));
+        graph.setSize(1200,0);
+        graph.setPreferredSize(new Dimension(1200,0));
 
         this.setLayout(new BorderLayout());
         this.add(left,BorderLayout.WEST);
