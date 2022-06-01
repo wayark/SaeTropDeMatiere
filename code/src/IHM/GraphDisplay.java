@@ -45,7 +45,11 @@ public class GraphDisplay extends JPanel {
 
 
         for (Edge e : listCity.getEdgeList()){
-            g2.setColor(Color.GRAY);
+            switch (e.getType()) {
+                case "A" -> g2.setColor(Color.blue);
+                case "N" -> g2.setColor(Color.GREEN);
+                case "D" -> g2.setColor(Color.ORANGE);
+            }
             line[i] = new Line2D.Double(e.getLinked1().getX()+5,e.getLinked1().getY()+5,e.getLinked2().getX()+5,e.getLinked2().getY()+5);
             g2.draw(line[i]);
             g2.setColor(Color.red);

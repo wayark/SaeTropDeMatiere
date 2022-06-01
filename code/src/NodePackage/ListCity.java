@@ -334,14 +334,4 @@ public class ListCity {
     }
 
 
-    public void GraphDrawing(){//set random coordinate to the node in the linked list
-        Place tmp = head;
-
-        Random r = new Random();
-        while (tmp !=null){
-            tmp.setX(r.nextInt(100,1000));
-            tmp.setY(r.nextInt(50,700));
-            tmp = (Place) tmp.next;
-        }
-    }
 }

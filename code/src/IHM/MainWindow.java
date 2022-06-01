@@ -9,30 +9,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainWindow extends JFrame {
-    
+
     private ListCity listCity;
     private final JFrame f;
 
     public MainWindow(ListCity listCity) throws HeadlessException {
         this.listCity = listCity;
-        //this.listCity.GraphDrawing();
         f = this;
 
         setup();
     }
 
-    public void setup(){
+    public void setup() {
         setTitle("Graph Map Analysis");
-        setSize(1500,800);
+        setSize(1500, 800);
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        getContentPane().add(new MainPanel(listCity,this));
+        getContentPane().add(new MainPanel(listCity, this));
         setJMenuBar(constMenu());
         setVisible(true);
     }
 
-    private JMenuBar constMenu(){
+    private JMenuBar constMenu() {
 
         JMenuBar menu = new JMenuBar();
 
@@ -58,12 +57,11 @@ public class MainWindow extends JFrame {
         menu.add(item5);
 
 
-
         mainI.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.getContentPane().removeAll();
-                f.getContentPane().add(new MainPanel(listCity,f));
+                f.getContentPane().add(new MainPanel(listCity, f));
                 f.revalidate();
             }
         });
@@ -71,7 +69,7 @@ public class MainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.getContentPane().removeAll();
-                f.getContentPane().add(new Ecran0(f));
+                f.getContentPane().add(new Ecran0(listCity, f));
                 f.revalidate();
             }
         });
@@ -80,7 +78,7 @@ public class MainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.getContentPane().removeAll();
-                f.getContentPane().add(new Ecran1(listCity,f));
+                f.getContentPane().add(new Ecran1(listCity, f));
                 f.revalidate();
             }
         });
