@@ -29,6 +29,22 @@ public class Edge {
         this.linked2 = linked2;
     }
 
+    public int getLenght() {
+        return lenght;
+    }
+
+    public void setLenght(int lenght) {
+        this.lenght = lenght;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String toString(){
         return ("From: "+linked1.getName()+ " To: "+linked2.getName()+ " | "+type+","+lenght);
     }

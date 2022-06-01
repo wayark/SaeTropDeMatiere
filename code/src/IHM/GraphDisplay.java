@@ -12,7 +12,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.util.Random;
 
-public class GraphDrawing extends JPanel {
+public class GraphDisplay extends JPanel {
     private int x;
     private int y;
     JFrame f;
@@ -21,7 +21,7 @@ public class GraphDrawing extends JPanel {
     Line2D.Double[] line;
 
 
-    public GraphDrawing(ListCity listCity, JFrame f) {
+    public GraphDisplay(ListCity listCity, JFrame f) {
         super();
         this.f = f;
         this.listCity = listCity;
@@ -47,25 +47,34 @@ public class GraphDrawing extends JPanel {
     }
 
     public void paintComponent(Graphics g) {
+
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
-        g2.setColor(Color.black);
-
-        Dimension d = f.getSize();
         int i;
-        int currentX;
-        int currentY;
-
         Random r = new Random();
         Place tmp = listCity.getHead();
 
+
+
+        g2.setStroke(new BasicStroke(2f));
         i=0;
+
+
+        for (Edge e : listCity.getEdgeList()){
+            g2.setColor(Color.GRAY);
+            line[i] = new Line2D.Double(e.getLinked1().getX()+5,e.getLinked1().getY()+5,e.getLinked2().getX()+5,e.getLinked2().getY()+5);
+            g2.draw(line[i]);
+            g2.setColor(Color.red);
+            g2.drawString(e.getType()+","+e.getLenght(),(e.getLinked1().getX()+e.getLinked2().getX())/2,(e.getLinked1().getY()+e.getLinked2().getY())/2);
+            i++;
+        }
+
+        i=0;
+        g2.setColor(Color.black);
         while (tmp !=null){
             g2.setColor(Color.black);
-            node[i] = new Ellipse2D.Double((currentX = r.nextInt(100,d.width-100)),(currentY = r.nextInt(100,d.height-100)),15,15);
-            g2.drawString(tmp.getType()+","+tmp.getName(),currentX,currentY-5);
-            tmp.setX(currentX);
-            tmp.setY(currentY);
+            node[i] = new Ellipse2D.Double(tmp.getX(),tmp.getY(),15,15);
+            g2.drawString(tmp.getType()+","+tmp.getName(),tmp.getX(),tmp.getY());
             g2.draw(node[i]);
 
             switch (tmp.getType()) {
@@ -79,14 +88,9 @@ public class GraphDrawing extends JPanel {
             tmp = (Place) tmp.next;
         }
 
-        i=0;
-        g2.setStroke(new BasicStroke(2f));
 
 
-        for (Edge e : listCity.getEdgeList()){
-            line[i] = new Line2D.Double(e.getLinked1().getX()+5,e.getLinked1().getY()+5,e.getLinked2().getX()+5,e.getLinked2().getY()+5);
-            g2.draw(line[i]);
-            i++;
-        }
+
+
     }
 }

@@ -29,33 +29,30 @@ public class MainPanel extends JPanel {
     }
     private void constpan(){
 
-        JLabel n = new JLabel("Taille du graphe");
+
 
         JPanel left = new JPanel();
         left.setLayout(new BoxLayout(left,BoxLayout.Y_AXIS));
-        left.setBackground(Color.red);
-        left.setSize(200,0);
-        left.setPreferredSize(new Dimension(200,0));
+        left.setBackground(Color.LIGHT_GRAY);
+        left.setSize(300,0);
+        left.setPreferredSize(new Dimension(300,0));
 
-        JPanel middle = new GraphDrawing(listCity,f);
-        middle.setLayout(new BoxLayout(middle,BoxLayout.Y_AXIS));
-        middle.setSize(400,0);
-        middle.setPreferredSize(new Dimension(400,0));
-
-        JPanel right = new JPanel();
-        right.setLayout(new BoxLayout(right,BoxLayout.Y_AXIS));
-        right.setBackground(Color.yellow);
-        right.add(n);
-        right.setSize(200,0);
-        right.setPreferredSize(new Dimension(200,0));
+        JLabel size = new JLabel("Taille du graphe :"+String.valueOf(listCity.countList()));
+        JLabel type = new JLabel("Type de Noeud :");
+        
 
 
-        //this.setLayout(new GridLayout(1,3));
+
+        left.add(n);
+
+        JPanel graph = new GraphDisplay(listCity,f);
+        graph.setLayout(new BoxLayout(graph,BoxLayout.Y_AXIS));
+        graph.setSize(800,0);
+        graph.setPreferredSize(new Dimension(800,0));
+
         this.setLayout(new BorderLayout());
         this.add(left,BorderLayout.WEST);
-        this.add(middle,BorderLayout.CENTER);
-        this.add(right,BorderLayout.EAST);
-
+        this.add(graph,BorderLayout.CENTER);
 
 
     }

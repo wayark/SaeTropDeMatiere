@@ -7,6 +7,7 @@ import NodePackage.Place;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Objects;
+import java.util.Random;
 
 public class ListCity {
 
@@ -119,7 +120,6 @@ public class ListCity {
         ArrayList<Edge> n = new ArrayList<Edge>();
         ArrayList<Node> treated = new ArrayList<Node>();
 
-
         for (Edge edge : tmp) {
             for (int i = 0 ; i< edgeList.size() ; i++){
                 if (edge.getLinked1() == edgeList.get(i).getLinked2() && edge.getLinked2() == edgeList.get(i).getLinked1() && !treated.contains(edgeList.get(i).getLinked2())) {
@@ -131,6 +131,7 @@ public class ListCity {
 
         n.remove(edgeList.get(44));
         n.remove(edgeList.get(59));
+        n.remove(edgeList.get(67));
         n.remove(edgeList.get(73));
 
         for (Edge e : n){
@@ -269,6 +270,16 @@ public class ListCity {
         return nbrOfType;
     }
 
+    public int countList(){
+        int counter = 0;
+        Place tmp = head;
+        while (tmp !=null){
+            counter++;
+            tmp = (Place) tmp.next;
+        }
+        return counter;
+    }
+
 
     public boolean isClicked(int xClicked, int yClicked){
         Place tmp = head;
@@ -295,5 +306,17 @@ public class ListCity {
 
     public ArrayList<Edge> getEdgeList() {
         return edgeList;
+    }
+
+
+    public void GraphDrawing(){//set random coordinate to the node in the linked list
+        Place tmp = head;
+
+        Random r = new Random();
+        while (tmp !=null){
+            tmp.setX(r.nextInt(100,1000));
+            tmp.setY(r.nextInt(50,700));
+            tmp = (Place) tmp.next;
+        }
     }
 }
