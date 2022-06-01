@@ -299,24 +299,31 @@ public class ListCity {
     }
 
 
-    public boolean isClicked(int xClicked, int yClicked){
+    public Place isClicked(int xClicked, int yClicked){
         Place tmp = head;
+        Place placeClicked = null;
         boolean found =false;
         while (tmp !=null && !found){
 
-            if((xClicked >= tmp.getX() && xClicked<= tmp.getX() +10) && (yClicked >= tmp.getY() && yClicked<= tmp.getY() +10)){
+            if((xClicked >= tmp.getX() && xClicked<= tmp.getX() +15) && (yClicked >= tmp.getY() && yClicked<= tmp.getY() +15)){
                 found = true;
+                placeClicked = tmp;
             }
             tmp = (Place) tmp.next;
         }
-        return found;
+
+        return placeClicked;
     }
+
+
 
     public ArrayList<Node> findShortestPath(){
         ArrayList<Node> shortestPath = new ArrayList<Node>();
 
         return shortestPath;
     }
+
+
 
     public Place getHead(){
         return head;

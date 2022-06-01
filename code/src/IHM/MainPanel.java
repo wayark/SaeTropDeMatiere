@@ -17,6 +17,8 @@ import java.util.Random;
 public class MainPanel extends JPanel {
     JFrame f;
     ListCity listCity;
+    private int x;
+    private int y;
 
 
     public MainPanel(ListCity listCity, JFrame f) {
@@ -43,6 +45,11 @@ public class MainPanel extends JPanel {
         JLabel place = new JLabel("Lieu Culturel : "+String.valueOf(listCity.countByType("L")));
         JLabel restaurant = new JLabel("Restaurant : "+String.valueOf(listCity.countByType("R")));
         JLabel edge = new JLabel("Nombre de lien : "+String.valueOf(listCity.countEdge()));
+        JLabel delim = new JLabel("--------------------------------");
+        JLabel nameP = new JLabel();
+        JLabel typeP = new JLabel();
+        JLabel countNeighbor = new JLabel();
+
 
         size.setAlignmentX(CENTER_ALIGNMENT);
         type.setAlignmentX(CENTER_ALIGNMENT);
@@ -50,9 +57,13 @@ public class MainPanel extends JPanel {
         place.setAlignmentX(CENTER_ALIGNMENT);
         restaurant.setAlignmentX(CENTER_ALIGNMENT);
         edge.setAlignmentX(CENTER_ALIGNMENT);
+        delim.setAlignmentX(CENTER_ALIGNMENT);
+        nameP.setAlignmentX(CENTER_ALIGNMENT);
+        typeP.setAlignmentX(CENTER_ALIGNMENT);
+        countNeighbor.setAlignmentX(CENTER_ALIGNMENT);
 
 
-        left.add(new JLabel(" "));
+        left.add(Box.createRigidArea(new Dimension(100,75)));
         left.add(size);
         left.add(new JLabel(" "));
         left.add(type);
@@ -61,8 +72,12 @@ public class MainPanel extends JPanel {
         left.add(restaurant);
         left.add(new JLabel(" "));
         left.add(edge);
-
-
+        left.add(Box.createRigidArea(new Dimension(100,75)));
+        left.add(delim);
+        left.add(Box.createRigidArea(new Dimension(100,75)));
+        left.add(nameP);
+        left.add(typeP);
+        left.add(countNeighbor);
 
 
 
@@ -76,6 +91,29 @@ public class MainPanel extends JPanel {
         this.add(graph,BorderLayout.CENTER);
 
 
+
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                x = e.getX()-300;
+                y = e.getY();
+                Place placeClicked;
+
+                if ((placeClicked = listCity.isClicked(x,y))!=null){
+
+
+                    nameP.setText("Nom de la ville : "+placeClicked.getName());
+                    switch (placeClicked.getType()) {
+                        case "V" -> typeP.setText("Type : Ville");
+                        case "L" -> typeP.setText("Type : Lieu culturel");
+                        case "R" -> typeP.setText("Type : Restaurant");
+                    }
+                    countNeighbor.setText("Nombre de voisin : "+String.valueOf(listCity.showNeighbor(placeClicked.getName())));
+                    f.revalidate();
+                }
+            }
+        });
     }
 
 

@@ -13,8 +13,6 @@ import java.awt.geom.Line2D;
 import java.util.Random;
 
 public class GraphDisplay extends JPanel {
-    private int x;
-    private int y;
     JFrame f;
     ListCity listCity;
     Ellipse2D.Double[] node;
@@ -28,23 +26,9 @@ public class GraphDisplay extends JPanel {
         node = new Ellipse2D.Double[listCity.size()];
         line = new Line2D.Double[listCity.getEdgeList().size()];
         setBorder(BorderFactory.createLineBorder(Color.gray));
-        constpan();
 
     }
-    private void constpan(){
 
-
-
-        this.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                x = e.getX();
-                y = e.getY();
-                System.out.println(listCity.isClicked(x,y));
-            }
-        });
-    }
 
     public void paintComponent(Graphics g) {
 
