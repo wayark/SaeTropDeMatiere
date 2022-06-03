@@ -1,6 +1,7 @@
 package IHM;
 
 import NodePackage.Edge;
+import NodePackage.Flag;
 import NodePackage.ListCity;
 import NodePackage.Place;
 
@@ -43,34 +44,47 @@ public class GraphDisplay extends JPanel {
         g2.setStroke(new BasicStroke(2f));
         i=0;
 
-
-        for (Edge e : listCity.getEdgeList()){
-            switch (e.getType()) {
-                case "A" -> g2.setColor(Color.blue);
-                case "N" -> g2.setColor(Color.GREEN);
-                case "D" -> g2.setColor(Color.ORANGE);
+        if (tmp.flag == Flag.NONE){
+            for (Edge e : listCity.getEdgeList()){
+                switch (e.getType()) {
+                    case "A" -> g2.setColor(Color.blue);
+                    case "N" -> g2.setColor(Color.GREEN);
+                    case "D" -> g2.setColor(Color.ORANGE);
+                }
+                line[i] = new Line2D.Double(e.getLinked1().getX()+5,e.getLinked1().getY()+5,e.getLinked2().getX()+5,e.getLinked2().getY()+5);
+                g2.draw(line[i]);
+                g2.setColor(Color.red);
+                g2.drawString(e.getType()+","+e.getLenght(),(e.getLinked1().getX()+e.getLinked2().getX())/2,(e.getLinked1().getY()+e.getLinked2().getY())/2);
+                i++;
             }
-            line[i] = new Line2D.Double(e.getLinked1().getX()+5,e.getLinked1().getY()+5,e.getLinked2().getX()+5,e.getLinked2().getY()+5);
-            g2.draw(line[i]);
-            g2.setColor(Color.red);
-            g2.drawString(e.getType()+","+e.getLenght(),(e.getLinked1().getX()+e.getLinked2().getX())/2,(e.getLinked1().getY()+e.getLinked2().getY())/2);
-            i++;
         }
-
+        
         i=0;
         g2.setColor(Color.black);
         while (tmp !=null){
-            g2.setColor(Color.black);
-            node[i] = new Ellipse2D.Double(tmp.getX(),tmp.getY(),15,15);
-            g2.drawString(tmp.getType()+","+tmp.getName(),tmp.getX(),tmp.getY());
-            g2.draw(node[i]);
+            if(tmp.flag == Flag.NONE){
+                g2.setColor(Color.black);
+                node[i] = new Ellipse2D.Double(tmp.getX(),tmp.getY(),15,15);
+                g2.drawString(tmp.getType()+","+tmp.getName(),tmp.getX(),tmp.getY());
+                g2.draw(node[i]);
 
-            switch (tmp.getType()) {
-                case "V" -> g2.setColor(Color.green);
-                case "L" -> g2.setColor(Color.orange);
-                case "R" -> g2.setColor(Color.red);
+                switch (tmp.getType()) {
+                    case "V" -> g2.setColor(Color.green);
+                    case "L" -> g2.setColor(Color.orange);
+                    case "R" -> g2.setColor(Color.red);
+                }
+                g2.fill(node[i]);
             }
-            g2.fill(node[i]);
+
+            else{
+                g2.setColor(Color.CYAN);
+                node[i] = new Ellipse2D.Double(tmp.getX(),tmp.getY(),17,17);
+                g2.draw(node[i]);
+                g2.fill(node[i]);
+                g2.setColor(Color.black);
+                g2.drawString(tmp.getType()+","+tmp.getName(),tmp.getX(),tmp.getY()-3);
+            }
+
 
             i++;
             tmp = (Place) tmp.next;

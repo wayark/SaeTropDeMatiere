@@ -61,6 +61,19 @@ public class ListCity {
         return list;
     }
 
+    public String[] getListName(){
+        String[] nodeName = new String[countList()];
+        Node tmp = head;
+        int i = 0;
+        while (tmp != null) {
+            nodeName[i] = tmp.getName();
+            i++;
+            tmp = tmp.next;
+        }
+
+        return nodeName;
+    }
+
     public void showList() {//print all the node present in the list
         Node tmp = this.head;
 
@@ -332,6 +345,5 @@ public class ListCity {
     public ArrayList<Edge> getEdgeList() {
         return edgeList;
     }
-
 
 }

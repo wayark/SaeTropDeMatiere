@@ -4,11 +4,13 @@ public class Node {
     private String type;
     public Node next;
     private int x,y;
+    public Flag flag;
 
     public Node(String name, String type,Node next) {
         this.type = type;
         this.name = name;
         this.next = next;
+        flag = Flag.NONE;
     }
 
     public boolean isEmpty(){
