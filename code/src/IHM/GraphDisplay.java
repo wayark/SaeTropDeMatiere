@@ -41,23 +41,31 @@ public class GraphDisplay extends JPanel {
 
 
 
-        g2.setStroke(new BasicStroke(2f));
         i=0;
 
-        if (tmp.flag == Flag.NONE){
             for (Edge e : listCity.getEdgeList()){
-                switch (e.getType()) {
-                    case "A" -> g2.setColor(Color.blue);
-                    case "N" -> g2.setColor(Color.GREEN);
-                    case "D" -> g2.setColor(Color.ORANGE);
+                if (e.flag == Flag.NONE){
+                    g2.setStroke(new BasicStroke(2f));
+                    switch (e.getType()) {
+                        case "A" -> g2.setColor(Color.blue);
+                        case "N" -> g2.setColor(Color.GREEN);
+                        case "D" -> g2.setColor(Color.ORANGE);
+                    }
+                    line[i] = new Line2D.Double(e.getLinked1().getX()+5,e.getLinked1().getY()+5,e.getLinked2().getX()+5,e.getLinked2().getY()+5);
+                    g2.draw(line[i]);
+                    g2.setColor(Color.red);
+                    g2.drawString(e.getType()+","+e.getLenght(),(e.getLinked1().getX()+e.getLinked2().getX())/2,(e.getLinked1().getY()+e.getLinked2().getY())/2);
                 }
-                line[i] = new Line2D.Double(e.getLinked1().getX()+5,e.getLinked1().getY()+5,e.getLinked2().getX()+5,e.getLinked2().getY()+5);
-                g2.draw(line[i]);
-                g2.setColor(Color.red);
-                g2.drawString(e.getType()+","+e.getLenght(),(e.getLinked1().getX()+e.getLinked2().getX())/2,(e.getLinked1().getY()+e.getLinked2().getY())/2);
+                else {
+                    g2.setColor(Color.CYAN);
+                    g2.setStroke(new BasicStroke(3f));
+                    line[i] = new Line2D.Double(e.getLinked1().getX()+5,e.getLinked1().getY()+5,e.getLinked2().getX()+5,e.getLinked2().getY()+5);
+                    g2.draw(line[i]);
+                    g2.setColor(Color.red);
+                    g2.drawString(e.getType()+","+e.getLenght(),(e.getLinked1().getX()+e.getLinked2().getX())/2,(e.getLinked1().getY()+e.getLinked2().getY())/2);
+                }
                 i++;
             }
-        }
         
         i=0;
         g2.setColor(Color.black);
@@ -93,6 +101,6 @@ public class GraphDisplay extends JPanel {
 
 
 
-
+        this.revalidate();
     }
 }

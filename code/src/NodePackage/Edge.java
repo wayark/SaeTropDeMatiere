@@ -1,16 +1,18 @@
 package NodePackage;
 
 public class Edge {
-    Node linked1;
-    Node linked2;
-    int lenght;
-    String type;
+    private Node linked1;
+    private Node linked2;
+    private int lenght;
+    private String type;
+    public Flag flag;
 
     public Edge(Node linked1, Node linked2, int length,String type) {
         this.linked1 = linked1;
         this.linked2 = linked2;
         this.lenght = length;
         this.type = type;
+        flag = Flag.NONE;
     }
 
     public Node getLinked1() {

@@ -1,6 +1,7 @@
 package IHM;
 
 
+import NodePackage.Flag;
 import NodePackage.ListCity;
 
 import javax.swing.*;
@@ -60,6 +61,7 @@ public class MainWindow extends JFrame {
         mainI.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                listCity.setAllFlag(Flag.NONE);
                 f.getContentPane().removeAll();
                 f.getContentPane().add(new MainPanel(listCity, f));
                 f.revalidate();
@@ -68,6 +70,7 @@ public class MainWindow extends JFrame {
         item1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                listCity.setAllFlag(Flag.NONE);
                 f.getContentPane().removeAll();
                 f.getContentPane().add(new Ecran0(listCity, f));
                 f.revalidate();
@@ -77,6 +80,7 @@ public class MainWindow extends JFrame {
         item2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                listCity.setAllFlag(Flag.NONE);
                 f.getContentPane().removeAll();
                 f.getContentPane().add(new Ecran1(listCity, f));
                 f.revalidate();

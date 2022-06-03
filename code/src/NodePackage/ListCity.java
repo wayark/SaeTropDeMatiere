@@ -346,4 +346,16 @@ public class ListCity {
         return edgeList;
     }
 
+    public void setAllFlag(Flag flag){
+        Node tmp = head;
+
+        for(Edge e : edgeList){
+            e.flag = flag;
+        }
+
+        while (tmp != null){
+            tmp.flag = flag;
+            tmp = tmp.next;
+        }
+    }
 }
