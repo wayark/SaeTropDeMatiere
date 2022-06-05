@@ -42,7 +42,6 @@ public class GraphDisplay extends JPanel {
 
 
         i=0;
-
             for (Edge e : listCity.getEdgeList()){
                 if (e.flag == Flag.NONE){
                     g2.setStroke(new BasicStroke(2f));
@@ -57,7 +56,12 @@ public class GraphDisplay extends JPanel {
                     g2.drawString(e.getType()+","+e.getLenght(),(e.getLinked1().getX()+e.getLinked2().getX())/2,(e.getLinked1().getY()+e.getLinked2().getY())/2);
                 }
                 else {
-                    g2.setColor(Color.CYAN);
+                    if (e.flag == Flag.PRINCIPAL){
+                        g2.setColor(Color.CYAN);
+                    }
+                    else {
+                        g2.setColor(Color.yellow);
+                    }
                     g2.setStroke(new BasicStroke(3f));
                     line[i] = new Line2D.Double(e.getLinked1().getX()+5,e.getLinked1().getY()+5,e.getLinked2().getX()+5,e.getLinked2().getY()+5);
                     g2.draw(line[i]);
@@ -85,7 +89,12 @@ public class GraphDisplay extends JPanel {
             }
 
             else{
-                g2.setColor(Color.CYAN);
+                if (tmp.flag == Flag.PRINCIPAL){
+                    g2.setColor(Color.CYAN);
+                }
+                else {
+                    g2.setColor(Color.yellow);
+                }
                 node[i] = new Ellipse2D.Double(tmp.getX(),tmp.getY(),17,17);
                 g2.draw(node[i]);
                 g2.fill(node[i]);

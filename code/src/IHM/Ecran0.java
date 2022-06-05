@@ -85,7 +85,7 @@ public class Ecran0 extends JPanel {
                     while (tmp != null){
                         if (tmp.getType().equals("V")){
                             tmp.flag = Flag.PRINCIPAL;
-                            System.out.println(tmp.flag);
+
                         }
                         tmp = (Place) tmp.next;
                     }
@@ -103,12 +103,14 @@ public class Ecran0 extends JPanel {
                     while (tmp != null){
                         if (tmp.getType().equals("R")){
                             tmp.flag = Flag.PRINCIPAL;
+                            System.out.println("salut");
                         }
                         tmp = (Place) tmp.next;
                     }
                 }
                 graph.removeAll();
                 graph.repaint();
+                graph = null;
                 graph = new GraphDisplay(listCity,f);
                 graph.repaint();
                 graph.revalidate();
