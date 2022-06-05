@@ -74,6 +74,17 @@ public class ListCity {
         return nodeName;
     }
 
+    public String[] getEdgeName(){
+        String[] edgeName = new String[countEdge()];
+        int i = 0 ;
+        for (Edge edge : edgeList){
+            edgeName[i] = edge.toString();
+            i++;
+        }
+
+        return edgeName;
+    }
+
     public void showList() {//print all the node present in the list
         Node tmp = this.head;
 

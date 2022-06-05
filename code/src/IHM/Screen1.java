@@ -39,6 +39,9 @@ public class Screen1 extends JPanel{
         typeCombo.setMaximumSize(new Dimension(200, 40));
         JButton validate1 = new JButton("Validez votre choix");
 
+        JLabel edgeChoice = new JLabel("choisissez le lien voulu :");
+        JComboBox<String> edgeCombo = new JComboBox<String>();
+
         cityChoice.setAlignmentX(CENTER_ALIGNMENT);
         cityChoice2.setAlignmentX(CENTER_ALIGNMENT);
         cityCombo.setAlignmentX(CENTER_ALIGNMENT);

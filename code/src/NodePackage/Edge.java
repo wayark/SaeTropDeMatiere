@@ -48,6 +48,6 @@ public class Edge {
     }
 
     public String toString(){
-        return ("From: "+linked1.getName()+ " To: "+linked2.getName()+ " | "+type+","+lenght);
+        return (linked1.getName()+ ", "+linked2.getName()+ " | "+type+","+lenght);
     }
 }
