@@ -49,26 +49,26 @@ public class ListCity {
         }
         return  counter;
     }
-    public String[] triAlphabétique(){
-        String[] placesTriés = new String[31];
+    public String[] alphabeticalSorting(){
+        String[] placesSorted = new String[31];
         Node tmp = this.head;
-        Node tmp2 = this.head;
-        String plusPetit = tmp.getName();
-        int compteur = 0;
+        Node tmp2;
+        String smaller = tmp.getName();
+        int counter = 0;
         while (tmp != null){
             tmp2 = this.head;
             while(tmp2 != null){
-                if(plusPetit.compareTo(tmp2.getName()) > 0) {
-                    plusPetit = tmp2.getName();
+                if(smaller.compareTo(tmp2.getName()) > 0) {
+                    smaller = tmp2.getName();
                 }
                 tmp2 = tmp2.next;
             }
-            placesTriés[compteur] = plusPetit;
-            compteur++;
+            placesSorted[counter] = smaller;
+            counter++;
             tmp = tmp.next;
         }
 
-        return placesTriés;
+        return placesSorted;
     }
 
     public ArrayList<Place> getList(){
