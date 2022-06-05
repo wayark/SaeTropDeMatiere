@@ -40,7 +40,10 @@ public class Screen1 extends JPanel{
         JButton validate1 = new JButton("Validez votre choix");
 
         JLabel edgeChoice = new JLabel("choisissez le lien voulu :");
-        JComboBox<String> edgeCombo = new JComboBox<String>();
+        JComboBox<String> edgeCombo = new JComboBox<String>(listCity.getEdgeName());
+        edgeCombo.setMaximumSize(new Dimension(270, 40));
+        JButton validate2 = new JButton("Validez votre choix");
+
 
         cityChoice.setAlignmentX(CENTER_ALIGNMENT);
         cityChoice2.setAlignmentX(CENTER_ALIGNMENT);
@@ -48,6 +51,9 @@ public class Screen1 extends JPanel{
         validate1.setAlignmentX(CENTER_ALIGNMENT);
         typeChoice.setAlignmentX(CENTER_ALIGNMENT);
         typeCombo.setAlignmentX(CENTER_ALIGNMENT);
+        edgeChoice.setAlignmentX(CENTER_ALIGNMENT);
+        edgeCombo.setAlignmentX(CENTER_ALIGNMENT);
+        validate2.setAlignmentX(CENTER_ALIGNMENT);
 
         left.add(Box.createRigidArea(new Dimension(100,10)));
         left.add(cityChoice);
@@ -60,6 +66,11 @@ public class Screen1 extends JPanel{
         left.add(typeCombo);
         left.add(Box.createRigidArea(new Dimension(100,15)));
         left.add(validate1);
+        left.add(Box.createRigidArea(new Dimension(100,50)));
+        left.add(edgeChoice);
+        left.add(Box.createRigidArea(new Dimension(100,10)));
+        left.add(edgeCombo);
+        left.add(validate2);
 
 
 
@@ -78,12 +89,12 @@ public class Screen1 extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 listCity.setAllFlag(Flag.NONE);
-                String choixCity = Objects.requireNonNull(cityCombo.getSelectedItem()).toString();
-                String choixType = Objects.requireNonNull(typeCombo.getSelectedItem()).toString();
-                Place cityChoosen = listCity.findByName(choixCity);
+                String city = Objects.requireNonNull(cityCombo.getSelectedItem()).toString();
+                String type = Objects.requireNonNull(typeCombo.getSelectedItem()).toString();
+                Place cityChoosen = listCity.findByName(city);
                 Neighbor tmp = cityChoosen.getHead();
 
-                if (Objects.equals(choixType, "Ville")){
+                if (Objects.equals(type, "Ville")){
                     while (tmp != null){
                         if (tmp.getType().equals("V")){
                             listCity.findByName(tmp.getName()).flag = Flag.SECONDARY;
@@ -91,7 +102,7 @@ public class Screen1 extends JPanel{
                         tmp = (Neighbor) tmp.next;
                     }
                 }
-                else if (Objects.equals(choixType, "Lieu Culturel")){
+                else if (Objects.equals(type, "Lieu Culturel")){
                     while (tmp != null){
                         if (tmp.getType().equals("L")){
                             listCity.findByName(tmp.getName()).flag = Flag.SECONDARY;
@@ -99,7 +110,7 @@ public class Screen1 extends JPanel{
                         tmp = (Neighbor) tmp.next;
                     }
                 }
-                else if (Objects.equals(choixType, "Restaurant")){
+                else if (Objects.equals(type, "Restaurant")){
                     while (tmp != null){
                         if (tmp.getType().equals("R")){
                             listCity.findByName(tmp.getName()).flag = Flag.SECONDARY;
@@ -115,6 +126,27 @@ public class Screen1 extends JPanel{
                 }
                 cityChoosen.flag = Flag.PRINCIPAL;
 
+                graph.removeAll();
+                graph.repaint();
+                graph = null;
+                graph = new GraphDisplay(listCity,f);
+                graph.repaint();
+                graph.revalidate();
+            }
+        });
+
+        validate2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listCity.setAllFlag(Flag.NONE);
+                String edgeChoosen = Objects.requireNonNull(edgeCombo.getSelectedItem()).toString();
+                for (Edge edge : listCity.getEdgeList()){
+                    if (edge.toString().equals(edgeChoosen)){
+                        edge.flag = Flag.PRINCIPAL;
+                        edge.getLinked1().flag = Flag.SECONDARY;
+                        edge.getLinked2().flag = Flag.SECONDARY;
+                    }
+                }
                 graph.removeAll();
                 graph.repaint();
                 graph = null;
