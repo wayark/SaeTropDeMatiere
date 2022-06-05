@@ -46,6 +46,7 @@ public class MainPanel extends JPanel {
         JLabel restaurant = new JLabel("Restaurant : "+String.valueOf(listCity.countByType("R")));
         JLabel edge = new JLabel("Nombre de lien : "+String.valueOf(listCity.countEdge()));
         JLabel delim = new JLabel("--------------------------------");
+        JLabel info = new JLabel("Cliquez sur un sommets pour avoir des info :");
         JLabel nameP = new JLabel();
         JLabel typeP = new JLabel();
         JLabel countNeighbor = new JLabel();
@@ -58,6 +59,7 @@ public class MainPanel extends JPanel {
         restaurant.setAlignmentX(CENTER_ALIGNMENT);
         edge.setAlignmentX(CENTER_ALIGNMENT);
         delim.setAlignmentX(CENTER_ALIGNMENT);
+        info.setAlignmentX(CENTER_ALIGNMENT);
         nameP.setAlignmentX(CENTER_ALIGNMENT);
         typeP.setAlignmentX(CENTER_ALIGNMENT);
         countNeighbor.setAlignmentX(CENTER_ALIGNMENT);
@@ -74,6 +76,7 @@ public class MainPanel extends JPanel {
         left.add(edge);
         left.add(Box.createRigidArea(new Dimension(100,75)));
         left.add(delim);
+        left.add(info);
         left.add(Box.createRigidArea(new Dimension(100,75)));
         left.add(nameP);
         left.add(typeP);

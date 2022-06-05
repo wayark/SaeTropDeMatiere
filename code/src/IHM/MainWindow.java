@@ -72,7 +72,7 @@ public class MainWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 listCity.setAllFlag(Flag.NONE);
                 f.getContentPane().removeAll();
-                f.getContentPane().add(new Ecran0(listCity, f));
+                f.getContentPane().add(new Screen0(listCity, f));
                 f.revalidate();
             }
         });
@@ -82,7 +82,17 @@ public class MainWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 listCity.setAllFlag(Flag.NONE);
                 f.getContentPane().removeAll();
-                f.getContentPane().add(new Ecran1(listCity, f));
+                f.getContentPane().add(new Screen1(listCity, f));
+                f.revalidate();
+            }
+        });
+
+        item3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listCity.setAllFlag(Flag.NONE);
+                f.getContentPane().removeAll();
+                f.getContentPane().add(new Screen2(listCity, f));
                 f.revalidate();
             }
         });

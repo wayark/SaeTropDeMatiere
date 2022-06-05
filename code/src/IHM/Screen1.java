@@ -5,23 +5,14 @@ import NodePackage.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
 import java.util.Objects;
-import java.util.Random;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.util.ArrayList;
-import java.util.Random;
 
-public class Ecran1 extends JPanel{
+public class Screen1 extends JPanel{
     private ListCity listCity;
     JFrame f;
     JPanel graph;
 
-    public Ecran1(ListCity listCity, JFrame f) throws HeadlessException {
+    public Screen1(ListCity listCity, JFrame f) throws HeadlessException {
         this.listCity = listCity;
         this.f = f;
         setBorder(BorderFactory.createLineBorder(Color.gray));

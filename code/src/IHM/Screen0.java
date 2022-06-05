@@ -8,12 +8,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-public class Ecran0 extends JPanel {
+public class Screen0 extends JPanel {
     JFrame f;
     ListCity listCity;
     JPanel graph;
 
-    public Ecran0(ListCity listCity, JFrame f) throws HeadlessException {
+    public Screen0(ListCity listCity, JFrame f) throws HeadlessException {
         super();
         this.f = f;
         this.listCity = listCity;
