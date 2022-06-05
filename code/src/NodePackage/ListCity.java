@@ -102,28 +102,23 @@ public class ListCity {
         }
     }
 
-    public int showNeighbor(String place) {//show the neighbor of the gived place in the String variable and return the sum of neigbors
+    public int countNeighbor(String place) {//show the neighbor of the gived place in the String variable and return the sum of neigbors
         Place city;
         int numberOfNeighbor = 0;
-
         if ((city = (Place) findByName(place)) != null) {
-            numberOfNeighbor = city.showNeighbor();
+            numberOfNeighbor = city.countNeighbor();
         }
-
         return numberOfNeighbor;
     }
 
-    public int showTwoNeighbor(String place) {//show all the neighbors that are at distance 2 of the place given
+    public int countTwoNeighbor(String place) {//show all the neighbors that are at distance 2 of the place given
         Place city;
         int numberOf2neighbor = 0;
-
         if ((city = (Place) findByName(place)) != null) {
             Neighbor tmp = city.getHead();
             while (tmp != null) {
-
                 Place distance2 = findByName(tmp.getName());
-                numberOf2neighbor += distance2.showNeighbor();
-
+                numberOf2neighbor += distance2.countNeighbor();
                 tmp = (Neighbor) tmp.next;
             }
         }
@@ -222,10 +217,10 @@ public class ListCity {
         int opening1, opening2;
 
         System.out.println(cityOne + " distance two neigbors :");
-        opening1 = showTwoNeighbor(cityOne);
+        opening1 = countTwoNeighbor(cityOne);
         System.out.println("=================");
         System.out.println(cityTwo + " distance two neigbors :");
-        opening2 = showTwoNeighbor(cityTwo);
+        opening2 = countTwoNeighbor(cityTwo);
 
         System.out.println(cityOne + " has " + opening1 + " distance two neigbors");
         System.out.println(cityTwo + " has " + opening2 + " distance two neigbors");

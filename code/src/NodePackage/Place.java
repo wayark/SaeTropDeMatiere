@@ -33,12 +33,11 @@ public class Place extends Node{
 
 
 
-    public int showNeighbor(){
+    public int countNeighbor(){
         Neighbor tmp = this.head;
         int numberOfNeigbor = 0;
         while(tmp != null){
             numberOfNeigbor++;
-            System.out.println(tmp.getType()+","+ tmp.getName());
             tmp = (Neighbor) tmp.next;
         }
         return numberOfNeigbor;
