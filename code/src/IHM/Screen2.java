@@ -50,30 +50,36 @@ public class Screen2 extends JPanel {
         JComboBox<String> cityCombo2 = new JComboBox<>(listCity.getListName());
         cityCombo2.setMaximumSize(new Dimension(200, 40));
 
-        JLabel answer = new JLabel("");
+        JLabel answer = new JLabel("esdxfcgv");
 
         JButton check = new JButton("Valider");
         check.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                boolean test = true;
                 Place city;
-                int numberOf2neighbor = 0;
-                String city1 = cityChoice1.getText();
+                String city1 = cityCombo1.getSelectedItem().toString();
                 if ((city = (Place) listCity.findByName(city1)) != null) {
                     Neighbor tmp = city.getHead();
                     Neighbor tmp2;
                     while (tmp != null) {
                         tmp2 = listCity.findByName(tmp.getName()).getHead();
-                        while(tmp2 != null){
-                            if(tmp2.getName().equals(cityChoice2.getText())){
+                        while(tmp2 != null && test == true){
+                            if(tmp2.getName().toString().equals(cityCombo2.getSelectedItem().toString())){
                                 answer.setText("Les villes sont à deux de distance");
+                                test = false;
                             }
+                            else{
+                                answer.setText("NOP");
+                            }
+
                             tmp2 = (Neighbor) tmp2.next;
                         }
 
                         tmp = (Neighbor) tmp.next;
                     }
                 }
+                f.revalidate();
             }
         });
 
