@@ -391,4 +391,31 @@ public class ListCity {
             tmp = tmp.next;
         }
     }
+
+    public void shortestroute(Node noeudEtudié, Node b){
+        ArrayList<Edge> tmp = edgeList;
+        PlusCourtChemin[] plusCourtChemin = new PlusCourtChemin[31];
+        int taillePlusCourtChemin= 0;
+        int[] nombreDeKm = new int[31];
+        Node secondNoeud;
+        for (int i=0; i<31; i++){
+            for(int y=0; y<31; y++){
+                if(edgeList.get(i).getLinked1().equals(noeudEtudié)){
+                    secondNoeud = edgeList.get(i).getLinked2();
+                    for(int z=0; i<31; i++){
+                        if(plusCourtChemin[z].getNode().toString().equals(secondNoeud)){
+
+                        }
+                        else if(z==30){
+                            plusCourtChemin[taillePlusCourtChemin].setNode(secondNoeud);
+                            plusCourtChemin[taillePlusCourtChemin].setDistance(edgeList.get(i).getLenght());
+                        }
+                    }
+                }
+                else if(edgeList.get(i).getLinked2().equals(noeudEtudié)){
+                    secondNoeud = edgeList.get(i).getLinked2();
+                }
+            }
+        }
+    }
 }
