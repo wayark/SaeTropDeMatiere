@@ -43,14 +43,14 @@ public class Screen2 extends JPanel {
 
 
         JLabel cityChoice1 = new JLabel("Choissisez une première ville");
-        JComboBox<String> cityCombo1 = new JComboBox<>(listCity.getListName());
+        JComboBox<String> cityCombo1 = new JComboBox<>(listCity.alphabeticalSorting());
         cityCombo1.setMaximumSize(new Dimension(200, 40));
 
         JLabel cityChoice2 = new JLabel("Choissisez une seconde ville");
         JComboBox<String> cityCombo2 = new JComboBox<>(listCity.getListName());
         cityCombo2.setMaximumSize(new Dimension(200, 40));
 
-        JLabel answer = new JLabel("esdxfcgv");
+        JLabel answer = new JLabel("Découvrez si deux lieu on une distance de deux entre elles !");
 
         JButton check = new JButton("Valider");
         check.addActionListener(new ActionListener() {
@@ -66,11 +66,11 @@ public class Screen2 extends JPanel {
                         tmp2 = listCity.findByName(tmp.getName()).getHead();
                         while(tmp2 != null && test == true){
                             if(tmp2.getName().toString().equals(cityCombo2.getSelectedItem().toString())){
-                                answer.setText("Les villes sont à deux de distance");
+                                answer.setText("Les villes sont à deux de distance !");
                                 test = false;
                             }
                             else{
-                                answer.setText("NOP");
+                                answer.setText("La distance entre ces deux villes n'est pas de deux...");
                             }
 
                             tmp2 = (Neighbor) tmp2.next;
@@ -83,11 +83,15 @@ public class Screen2 extends JPanel {
             }
         });
 
+        left.add(Box.createRigidArea(new Dimension(100,10)));
         left.add(cityChoice1);
         left.add(cityCombo1);
+        left.add(Box.createRigidArea(new Dimension(100,10)));
         left.add(cityChoice2);
         left.add(cityCombo2);
+        left.add(Box.createRigidArea(new Dimension(100,20)));
         left.add(check);
+        left.add(Box.createRigidArea(new Dimension(100,20)));
         left.add(answer);
         cityChoice1.setAlignmentX(CENTER_ALIGNMENT);
         cityChoice2.setAlignmentX(CENTER_ALIGNMENT);

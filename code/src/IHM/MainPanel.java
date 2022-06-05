@@ -112,7 +112,7 @@ public class MainPanel extends JPanel {
                         case "L" -> typeP.setText("Type : Lieu culturel");
                         case "R" -> typeP.setText("Type : Restaurant");
                     }
-                    countNeighbor.setText("Nombre de voisin : "+String.valueOf(listCity.showNeighbor(placeClicked.getName())));
+                    /*countNeighbor.setText("Nombre de voisin : "+String.valueOf(listCity.showNeighbor(placeClicked.getName())));*/
                     f.revalidate();
                 }
             }

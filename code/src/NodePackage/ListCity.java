@@ -52,16 +52,22 @@ public class ListCity {
     public String[] alphabeticalSorting(){
         String[] placesSorted = new String[31];
         Node tmp = this.head;
-        Node tmp2;
-        String smaller = tmp.getName();
+        Node tmp2 = this.head;
+        Node tmp3 = tmp2.next;
+        String smaller;
         int counter = 0;
         while (tmp != null){
+            smaller = tmp.getName();
             tmp2 = this.head;
             while(tmp2 != null){
-                if(smaller.compareTo(tmp2.getName()) > 0) {
-                    smaller = tmp2.getName();
+                tmp3 = tmp2.next;
+                if(smaller.toString().compareTo(tmp3.getName().toString()) > 0) {
+                    smaller = tmp3.getName();
+                    tmp2.next = tmp2.next.next;
                 }
-                tmp2 = tmp2.next;
+                else{
+                    tmp2 = tmp2.next;
+                }
             }
             placesSorted[counter] = smaller;
             counter++;
