@@ -50,6 +50,8 @@ public class Screen2 extends JPanel {
         JComboBox<String> cityCombo2 = new JComboBox<>(listCity.getListName());
         cityCombo2.setMaximumSize(new Dimension(200, 40));
 
+        JLabel answer = new JLabel("");
+
         JButton check = new JButton("Valider");
         check.addActionListener(new ActionListener() {
             @Override
@@ -64,7 +66,7 @@ public class Screen2 extends JPanel {
                         tmp2 = listCity.findByName(tmp.getName()).getHead();
                         while(tmp2 != null){
                             if(tmp2.getName().equals(cityChoice2.getText())){
-
+                                answer.setText("Les villes sont à deux de distance");
                             }
                             tmp2 = (Neighbor) tmp2.next;
                         }
@@ -75,16 +77,17 @@ public class Screen2 extends JPanel {
             }
         });
 
-        JLabel answer = new JLabel("");
-
         left.add(cityChoice1);
         left.add(cityCombo1);
         left.add(cityChoice2);
         left.add(cityCombo2);
+        left.add(check);
         left.add(answer);
         cityChoice1.setAlignmentX(CENTER_ALIGNMENT);
         cityChoice2.setAlignmentX(CENTER_ALIGNMENT);
         cityCombo1.setAlignmentX(CENTER_ALIGNMENT);
         cityCombo1.setAlignmentX(CENTER_ALIGNMENT);
+        check.setAlignmentX(CENTER_ALIGNMENT);
+        answer.setAlignmentX(CENTER_ALIGNMENT);
     }
 }
