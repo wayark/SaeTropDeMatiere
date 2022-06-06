@@ -6,8 +6,9 @@ public class PlusCourtChemin {
     private Node node;
     private int distance;
 
-    public PlusCourtChemin(Node node){
+    public PlusCourtChemin(Node node, int distance){
         this.node = node;
+        this.distance = distance;
     }
 
     public Node getNode() {

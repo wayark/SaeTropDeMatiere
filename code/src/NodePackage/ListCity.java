@@ -395,14 +395,20 @@ public class ListCity {
     public void shortestroute(Node noeudDepart){
         ArrayList<PlusCourtChemin> plusCourtChemins = remplirListe(noeudDepart);
     }
-    public void trouveMini(Node noeudDepart){
+
+
+    public int trouveDistance(int i, Node noeudDepart){
         ArrayList<Edge> tmp = edgeList;
-        for(int i=0; i<31; i++){
-            if(tmp.get(i).getLinked1() == noeudDepart){
-
-            }
-
+        if(tmp.get(i).getLinked1() == noeudDepart){
+            return tmp.get(i).getLenght();
         }
+        else if(tmp.get(i).getLinked2() == noeudDepart){
+            return tmp.get(i).getLenght();
+        }
+        else{
+            return 10000;
+        }
+
     }
 
 
@@ -411,27 +417,35 @@ public class ListCity {
         ArrayList<PlusCourtChemin> plusCourtChemin = new ArrayList<PlusCourtChemin>();
 
         //initialisation du noeud de départ :
-        plusCourtChemin.add(new PlusCourtChemin(noeudDepart));
-        plusCourtChemin.set(0, new PlusCourtChemin(noeudDepart)).setDistance(0); //heu pas sur
+        plusCourtChemin.add(new PlusCourtChemin(noeudDepart, 0));
 
 
         int i = 0;
         int y =0;
-        boolean verrification =false;
+        int distance;
+        boolean verrificationLinked1 =false;
+        boolean verrificationLinked2 = false;
         while(tmp.get(i) !=null){
             y = i;
             while(plusCourtChemin.get(y) != null){
-                if(! plusCourtChemin.get(y).getNode().equals(tmp.get(i).getLinked1()) || ! plusCourtChemin.get(y).getNode().equals(tmp.get(i).getLinked2())){
-                    verrification = true;
+                if(! plusCourtChemin.get(y).getNode().equals(tmp.get(i).getLinked1())){
+                    verrificationLinked1 = true;
+                }
+                else if(! plusCourtChemin.get(y).getNode().equals(tmp.get(i).getLinked2())){
+                    verrificationLinked2 = true;
                 }
                 y++;
             }
-            if (verrification == false){
-                plusCourtChemin.add(new PlusCourtChemin(tmp.get(i).getLinked1()));
+            if (verrificationLinked1 == false){
+                distance = trouveDistance(i, noeudDepart);
+                plusCourtChemin.add(new PlusCourtChemin(tmp.get(i).getLinked1(), distance));
             }
-            else{
-                verrification = false;
+            else if (verrificationLinked2 == false){
+                distance = trouveDistance(i, noeudDepart);
+                plusCourtChemin.add(new PlusCourtChemin(tmp.get(i).getLinked2(), distance));
             }
+            verrificationLinked1 = false;
+            verrificationLinked2 = false;
             i++;
         }
         return plusCourtChemin;
