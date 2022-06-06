@@ -293,10 +293,10 @@ public class ListCity {
         else {
             System.out.println(cityTwo + " has more cultural place than "+ cityOne);
         }
-        
+
     }
 
-    private int countNeighborByType(String city, String type){
+    private int countNeighborByType(String city, String type){//count the 2 distance place with the specified type
 
         int nbrOfType = 0;
         Place cityNode = (Place) findByName(city);//get the node with the same name as the string

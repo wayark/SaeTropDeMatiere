@@ -9,8 +9,8 @@ import java.util.Objects;
 
 public class Screen1 extends JPanel{
     private ListCity listCity;
-    JFrame f;
-    JPanel graph;
+    private JFrame f;
+    private JPanel graph;
 
     public Screen1(ListCity listCity, JFrame f) throws HeadlessException {
         this.listCity = listCity;
