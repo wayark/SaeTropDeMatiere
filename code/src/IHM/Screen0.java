@@ -9,9 +9,9 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class Screen0 extends JPanel {
-    JFrame f;
-    ListCity listCity;
-    JPanel graph;
+    private JFrame f;
+    private ListCity listCity;
+    private JPanel graph;
 
     public Screen0(ListCity listCity, JFrame f) throws HeadlessException {
         super();

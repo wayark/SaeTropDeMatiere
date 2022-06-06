@@ -97,6 +97,16 @@ public class MainWindow extends JFrame {
             }
         });
 
+        item4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listCity.setAllFlag(Flag.NONE);
+                f.getContentPane().removeAll();
+                f.getContentPane().add(new Screen3(listCity, f));
+                f.revalidate();
+            }
+        });
+
         return menu;
     }
 
