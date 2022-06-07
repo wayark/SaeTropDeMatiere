@@ -393,11 +393,43 @@ public class ListCity {
     }
 
     public void shortestroute(Node noeudDepart){
+        ArrayList<Node> noeudDejaUtilise = new ArrayList<Node>();
+        noeudDejaUtilise.add(noeudDepart);
         int indice;
         ArrayList<PlusCourtChemin> plusCourtChemins = remplirListe(noeudDepart);
         plusCourtChemins = trouveDistance(noeudDepart, plusCourtChemins);
-        indice = rechercheLaPlusPetiteDistance(plusCourtChemins);
+        for(int i=0; i<plusCourtChemins.size();i++){
+            indice = rechercheLaPlusPetiteDistance(plusCourtChemins);
+            noeudDejaUtilise.add(plusCourtChemins.get(indice).getNode());
+            plusCourtChemins = calculDistance(indice, plusCourtChemins,noeudDejaUtilise);
+        }
 
+    }
+    public ArrayList<PlusCourtChemin>  calculDistance(int indice, ArrayList<PlusCourtChemin> plusCourtChemins, ArrayList<Node> noeudDejaUtilise){
+        ArrayList<Edge> tmp = edgeList;
+        int distance=0;
+        boolean verrification = false;
+        int distancePtDeptoPtetudie = plusCourtChemins.get(indice).getDistance();
+        Node noeud = plusCourtChemins.get(indice).getNode();
+        for(int i=0; plusCourtChemins.get(i) != null; i++){
+            for(int y=0; tmp.get(y) != null;y++){
+                if(tmp.get(y).getLinked1() == plusCourtChemins.get(indice).getNode() && plusCourtChemins.get(indice).getNode().equals(tmp.get(y).getLinked2())){
+                    verrification = true;
+                }
+                else if(tmp.get(y).getLinked2() == plusCourtChemins.get(indice).getNode()  && plusCourtChemins.get(indice).getNode().equals(tmp.get(y).getLinked1())){
+                    verrification = true;
+                }
+                if(verrification == true){
+                    distance = tmp.get(y).getLenght() + distancePtDeptoPtetudie;
+                    if(distance < plusCourtChemins.get(i).getDistance()){
+                        plusCourtChemins.get(i).setDistance(distance);
+                    }
+                }
+                y++;
+            }
+            i++;
+        }
+        return plusCourtChemins;
     }
 
 
