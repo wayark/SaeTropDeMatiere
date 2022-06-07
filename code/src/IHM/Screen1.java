@@ -126,10 +126,7 @@ public class Screen1 extends JPanel{
                 }
                 cityChoosen.flag = Flag.PRINCIPAL;
 
-                graph.removeAll();
-                graph.repaint();
-                graph = null;
-                graph = new GraphDisplay(listCity,f);
+
                 graph.repaint();
                 graph.revalidate();
             }
@@ -147,13 +144,11 @@ public class Screen1 extends JPanel{
                         edge.getLinked2().flag = Flag.SECONDARY;
                     }
                 }
-                graph.removeAll();
-                graph.repaint();
-                graph = null;
-                graph = new GraphDisplay(listCity,f);
                 graph.repaint();
                 graph.revalidate();
             }
         });
+
+
     }
 }

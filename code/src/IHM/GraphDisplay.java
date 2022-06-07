@@ -62,7 +62,7 @@ public class GraphDisplay extends JPanel {
                     else {
                         g2.setColor(Color.yellow);
                     }
-                    g2.setStroke(new BasicStroke(3f));
+                    g2.setStroke(new BasicStroke(4f));
                     line[i] = new Line2D.Double(e.getLinked1().getX()+5,e.getLinked1().getY()+5,e.getLinked2().getX()+5,e.getLinked2().getY()+5);
                     g2.draw(line[i]);
                     g2.setColor(Color.red);

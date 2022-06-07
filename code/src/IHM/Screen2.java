@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Screen2 extends JPanel {
     private ListCity listCity;
@@ -43,7 +44,7 @@ public class Screen2 extends JPanel {
 
 
         JLabel cityChoice1 = new JLabel("Choissisez une première ville");
-        JComboBox<String> cityCombo1 = new JComboBox<>(listCity.alphabeticalSorting());
+        JComboBox<String> cityCombo1 = new JComboBox<>(listCity.getListName());
         cityCombo1.setMaximumSize(new Dimension(200, 40));
 
         JLabel cityChoice2 = new JLabel("Choissisez une seconde ville");
@@ -59,13 +60,14 @@ public class Screen2 extends JPanel {
                 boolean test = true;
                 Place city;
                 String city1 = cityCombo1.getSelectedItem().toString();
+
                 if ((city = (Place) listCity.findByName(city1)) != null) {
                     Neighbor tmp = city.getHead();
                     Neighbor tmp2;
                     while (tmp != null) {
                         tmp2 = listCity.findByName(tmp.getName()).getHead();
-                        while(tmp2 != null && test == true){
-                            if(tmp2.getName().toString().equals(cityCombo2.getSelectedItem().toString())){
+                        while(tmp2 != null && test){
+                            if(tmp2.getName().toString().equals(cityCombo2.getSelectedItem().toString()) && !city.containNeigbor(tmp2.getName())){
                                 answer.setText("Les villes sont à deux de distance !");
                                 test = false;
                             }

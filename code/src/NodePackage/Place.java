@@ -1,5 +1,7 @@
 package NodePackage;
 
+import java.util.ArrayList;
+
 public class Place extends Node{
     private Neighbor head;
 
@@ -47,5 +49,18 @@ public class Place extends Node{
         return head;
     }
 
+    public boolean containNeigbor(String name){
+        boolean found = false;
+        Neighbor tmp = head;
+
+        while (tmp!=null && !found){
+            if(tmp.getName().equals(name)){
+                found = true;
+            }
+            tmp = (Neighbor) tmp.next;
+        }
+
+        return found;
+    }
 
 }
