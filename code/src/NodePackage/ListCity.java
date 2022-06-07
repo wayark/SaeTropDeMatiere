@@ -392,7 +392,7 @@ public class ListCity {
         }
     }
 
-    public void shortestroute(Node noeudDepart){
+    public String shortestroute(Node noeudDepart, Node noeudfin){
         ArrayList<Node> noeudDejaUtilise = new ArrayList<Node>();
         noeudDejaUtilise.add(noeudDepart);
         int indice;
@@ -404,6 +404,14 @@ public class ListCity {
             plusCourtChemins = calculDistance(indice, plusCourtChemins,noeudDejaUtilise);
         }
 
+        int indiceNoeudFin = -1;
+        for(int i = 0; plusCourtChemins.get(i) != null; i++){
+            if (plusCourtChemins.get(i).getNode().equals(noeudfin)){
+                indiceNoeudFin = i;
+            }
+        }
+        System.out.println(plusCourtChemins.get(indiceNoeudFin).getChemin());
+        return plusCourtChemins.get(indiceNoeudFin).getChemin();
     }
     public ArrayList<PlusCourtChemin>  calculDistance(int indice, ArrayList<PlusCourtChemin> plusCourtChemins, ArrayList<Node> noeudDejaUtilise){
         ArrayList<Edge> tmp = edgeList;
@@ -413,23 +421,33 @@ public class ListCity {
         Node noeud = plusCourtChemins.get(indice).getNode();
         for(int i=0; plusCourtChemins.get(i) != null; i++){
             for(int y=0; tmp.get(y) != null;y++){
-                if(tmp.get(y).getLinked1() == plusCourtChemins.get(indice).getNode() && plusCourtChemins.get(indice).getNode().equals(tmp.get(y).getLinked2())){
+                if(tmp.get(y).getLinked1() == plusCourtChemins.get(indice).getNode() && plusCourtChemins.get(i).getNode().equals(tmp.get(y).getLinked2())){
                     verrification = true;
                 }
-                else if(tmp.get(y).getLinked2() == plusCourtChemins.get(indice).getNode()  && plusCourtChemins.get(indice).getNode().equals(tmp.get(y).getLinked1())){
+                else if(tmp.get(y).getLinked2() == plusCourtChemins.get(indice).getNode()  && plusCourtChemins.get(i).getNode().equals(tmp.get(y).getLinked1())){
                     verrification = true;
                 }
-                if(verrification == true){
+                if(verrification == true && notInNoeudDejaUtilisee(noeudDejaUtilise,plusCourtChemins.get(i).getNode())==false){
                     distance = tmp.get(y).getLenght() + distancePtDeptoPtetudie;
                     if(distance < plusCourtChemins.get(i).getDistance()){
                         plusCourtChemins.get(i).setDistance(distance);
+                        plusCourtChemins.get(i).setChemin(plusCourtChemins.get(indice).getChemin() +" "+ plusCourtChemins.get(i).getNode().getName()+ " ");
                     }
                 }
+                verrification = false;
                 y++;
             }
             i++;
         }
         return plusCourtChemins;
+    }
+
+    public boolean notInNoeudDejaUtilisee(ArrayList<Node> noeudDejaUtilise, Node noeud){
+        boolean test= false;
+        if(noeudDejaUtilise.contains(noeud)){
+            test = true;
+        }
+        return test;
     }
 
 
@@ -457,7 +475,7 @@ public class ListCity {
         ArrayList<PlusCourtChemin> plusCourtChemin = new ArrayList<PlusCourtChemin>();
 
         //initialisation du noeud de départ :
-        plusCourtChemin.add(new PlusCourtChemin(noeudDepart));
+        plusCourtChemin.add(new PlusCourtChemin(noeudDepart, noeudDepart.getName()));
         plusCourtChemin.get(0).setDistance(0);
 
 
@@ -475,13 +493,14 @@ public class ListCity {
                 else if(! plusCourtChemin.get(y).getNode().equals(tmp.get(i).getLinked2())){
                     verrificationLinked2 = true;
                 }
+
                 y++;
             }
             if (verrificationLinked1 == false){
-                plusCourtChemin.add(new PlusCourtChemin(tmp.get(i).getLinked1()));
+                plusCourtChemin.add(new PlusCourtChemin(tmp.get(i).getLinked1(), tmp.get(i).getLinked1().getName()));
             }
             else if (verrificationLinked2 == false){
-                plusCourtChemin.add(new PlusCourtChemin(tmp.get(i).getLinked2()));
+                plusCourtChemin.add(new PlusCourtChemin(tmp.get(i).getLinked2(), tmp.get(i).getLinked2().getName() + " "));
             }
             verrificationLinked1 = false;
             verrificationLinked2 = false;
