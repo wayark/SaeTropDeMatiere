@@ -393,22 +393,30 @@ public class ListCity {
     }
 
     public void shortestroute(Node noeudDepart){
+        int indice;
         ArrayList<PlusCourtChemin> plusCourtChemins = remplirListe(noeudDepart);
+        plusCourtChemins = trouveDistance(noeudDepart, plusCourtChemins);
+        indice = rechercheLaPlusPetiteDistance(plusCourtChemins);
+
     }
 
 
-    public int trouveDistance(int i, Node noeudDepart){
+    public ArrayList<PlusCourtChemin> trouveDistance(Node noeudDepart, ArrayList<PlusCourtChemin> plusCourtChemins){
         ArrayList<Edge> tmp = edgeList;
-        if(tmp.get(i).getLinked1() == noeudDepart){
-            return tmp.get(i).getLenght();
-        }
-        else if(tmp.get(i).getLinked2() == noeudDepart){
-            return tmp.get(i).getLenght();
-        }
-        else{
-            return 10000;
+
+        for(int i=0; plusCourtChemins.get(i) !=null; i++){
+            for(int y=0; edgeList.get(y) !=null; y++){
+                if(tmp.get(y).getLinked1() == noeudDepart && plusCourtChemins.get(i).getNode().equals(tmp.get(y).getLinked2())){
+                    plusCourtChemins.get(i).setDistance(tmp.get(y).getLenght());
+                }
+                else if(tmp.get(y).getLinked2() == noeudDepart  && plusCourtChemins.get(i).getNode().equals(tmp.get(y).getLinked1())){
+                    plusCourtChemins.get(i).setDistance(tmp.get(y).getLenght());
+                }
+            }
+
         }
 
+        return plusCourtChemins;
     }
 
 
@@ -417,7 +425,8 @@ public class ListCity {
         ArrayList<PlusCourtChemin> plusCourtChemin = new ArrayList<PlusCourtChemin>();
 
         //initialisation du noeud de départ :
-        plusCourtChemin.add(new PlusCourtChemin(noeudDepart, 0));
+        plusCourtChemin.add(new PlusCourtChemin(noeudDepart));
+        plusCourtChemin.get(0).setDistance(0);
 
 
         int i = 0;
@@ -437,17 +446,29 @@ public class ListCity {
                 y++;
             }
             if (verrificationLinked1 == false){
-                distance = trouveDistance(i, noeudDepart);
-                plusCourtChemin.add(new PlusCourtChemin(tmp.get(i).getLinked1(), distance));
+                plusCourtChemin.add(new PlusCourtChemin(tmp.get(i).getLinked1()));
             }
             else if (verrificationLinked2 == false){
-                distance = trouveDistance(i, noeudDepart);
-                plusCourtChemin.add(new PlusCourtChemin(tmp.get(i).getLinked2(), distance));
+                plusCourtChemin.add(new PlusCourtChemin(tmp.get(i).getLinked2()));
             }
             verrificationLinked1 = false;
             verrificationLinked2 = false;
             i++;
         }
         return plusCourtChemin;
+    }
+
+    public int rechercheLaPlusPetiteDistance(ArrayList<PlusCourtChemin> plusCourtChemins){
+        int i = 0;
+        int distanceLaPlusPetite = 10000;
+        int indice =-1;
+        while(! plusCourtChemins.get(i).equals(null)){
+            if (plusCourtChemins.get(i).getDistance() < distanceLaPlusPetite){
+                distanceLaPlusPetite = plusCourtChemins.get(i).getDistance();
+                indice = i;
+            }
+            i++;
+        }
+        return indice;
     }
 }
