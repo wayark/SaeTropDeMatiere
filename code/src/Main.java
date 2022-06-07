@@ -9,6 +9,8 @@ public class Main {
         ListCity l = new ListCity();
         CsvReader c = new CsvReader(l);
 
+        l.shortestroute(l.findByName("Lyon"),l.findByName("Bellecour"));
+
       /*  //Recherche selon nom
        listCity.findByName("Lyon");
 
