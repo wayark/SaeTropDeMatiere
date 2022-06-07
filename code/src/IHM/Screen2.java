@@ -67,7 +67,7 @@ public class Screen2 extends JPanel {
                     while (tmp != null) {
                         tmp2 = listCity.findByName(tmp.getName()).getHead();
                         while(tmp2 != null && test){
-                            if(tmp2.getName().toString().equals(cityCombo2.getSelectedItem().toString()) && !city.containNeigbor(tmp.getName())){
+                            if(tmp2.getName().toString().equals(cityCombo2.getSelectedItem().toString()) && !city.containNeigbor(tmp2.getName())){
                                 answer.setText("Les villes sont à deux de distance !");
                                 test = false;
                             }
